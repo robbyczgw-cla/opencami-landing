@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenCami 🦎 - A batteries-included web client for OpenClaw</title>
+    <meta name="description" content="OpenCami is a feature-rich web client for OpenClaw with image attachments, conversation search, keyboard shortcuts, and more.">
+    <meta name="keywords" content="OpenClaw, OpenCami, web client, AI, chameleon">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="OpenCami 🦎 - Web Client for OpenClaw">
+    <meta property="og:description" content="A batteries-included web client for OpenClaw with smart features.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://opencami.xyz">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦎</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --leaf: #2d5a27;
+            --forest: #1a3518;
+            --lime: #84cc16;
+            --mint: #a7f3d0;
+            --cream: #fefdf8;
+            --bark: #3d2914;
+            --moss: #4a7c47;
+            --glow: #bef264;
+            
+            --font-heading: 'Space Grotesk', system-ui, sans-serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--forest);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--leaf) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, var(--moss) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(254, 253, 248, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(45, 90, 39, 0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--leaf);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo:hover .chameleon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .chameleon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--forest);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--lime);
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--mint) 0%, transparent 70%);
+            opacity: 0.4;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+            50% { transform: translateX(-50%) scale(1.1); opacity: 0.3; }
+        }
+        
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-title .chameleon {
+            animation: wiggle 3s ease-in-out infinite;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--moss);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--bark);
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--leaf);
+            color: var(--cream);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(45, 90, 39, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: var(--moss);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(45, 90, 39, 0.4);
+        }
+        
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Features */
+        .features {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--cream) 0%, rgba(167, 243, 208, 0.2) 100%);
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--forest);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--moss);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(45, 90, 39, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lime), var(--moss));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.1);
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-desc {
+            color: var(--bark);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        /* About */
+        .about {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--lime), var(--leaf));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(132, 204, 22, 0.3);
+        }
+        
+        .about-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .about-location {
+            color: var(--moss);
+            font-weight: 500;
+        }
+        
+        /* Links */
+        .links {
+            padding: 4rem 2rem;
+            background: var(--forest);
+            color: var(--cream);
+        }
+        
+        .links-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--cream);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .link-item svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem;
+            background: var(--bark);
+            color: var(--cream);
+            text-align: center;
+        }
+        
+        .footer-love {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-copy {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+            
+            .features, .about {
+                padding: 4rem 1.5rem;
+            }
+            
+            .links-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .link-item {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                Open<span style="color: var(--lime)">Cami</span> <span class="chameleon">🦎</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="https://github.com/robbyczgw-cla/opencami" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">OpenCami <span class="chameleon">🦎</span></h1>
+            <p class="hero-subtitle">A batteries-included web client for OpenClaw</p>
+            <p class="hero-tagline">Image attachments, conversation search, keyboard shortcuts, smart titles, and more — all in one sleek interface.</p>
+            <a href="https://github.com/robbyczgw-cla/opencami" class="cta-button" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Try it on GitHub
+            </a>
+        </section>
+        
+        <section id="features" class="features">
+            <h2 class="section-title">Features</h2>
+            <p class="section-subtitle">Everything you need, nothing you don't</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <span class="feature-emoji">🖼️</span>
+                    <h3 class="feature-title">Image Attachments</h3>
+                    <p class="feature-desc">Drop images right into your conversations. Smart compression keeps things fast without losing quality.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-emoji">🔍</span>
+                    <h3 class="feature-title">Conversation Search</h3>
+                    <p class="feature-desc">Find that one message from three weeks ago. Full-text search across all your conversations.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-emoji">⌨️</span>
+                    <h3 class="feature-title">Keyboard Shortcuts</h3>
+                    <p class="feature-desc">Power-user friendly. Navigate, send, and manage without leaving your keyboard.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-emoji">📥</span>
+                    <h3 class="feature-title">Export Conversations</h3>
+                    <p class="feature-desc">Your data is yours. Export any conversation in multiple formats whenever you need.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-emoji">🏷️</span>
+                    <h3 class="feature-title">Smart AI Titles</h3>
+                    <p class="feature-desc">No more "New Chat #47". Auto-generated titles that actually describe what you discussed.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-emoji">💡</span>
+                    <h3 class="feature-title">Smart Follow-ups</h3>
+                    <p class="feature-desc">Suggested prompts based on context. Keep the conversation flowing naturally.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="about">
+            <div class="about-content fade-in">
+                <div class="about-avatar">🦎</div>
+                <p class="about-quote">"Building the OpenClaw ecosystem: Skills, PRs, and OpenCami."</p>
+                <p class="about-location">📍 Clawiverse 🦎</p>
+            </div>
+        </section>
+        
+        <section class="links">
+            <div class="links-grid">
+                <a href="https://github.com/robbyczgw-cla/opencami" class="link-item" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://openclawskills.xyz" class="link-item" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    OpenClaw Skills
+                </a>
+                <a href="https://openclaw.ai" class="link-item" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    OpenClaw
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p class="footer-love">Made with 💚 in the Clawiverse</p>
+        <p class="footer-copy">© 2026 OpenCami</p>
+    </footer>
+    
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
