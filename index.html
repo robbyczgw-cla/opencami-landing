@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenCami 🦎 - A batteries-included web client for OpenClaw</title>
-    <meta name="description" content="OpenCami is a feature-rich web client for OpenClaw with image attachments, conversation search, keyboard shortcuts, and more.">
-    <meta name="keywords" content="OpenClaw, OpenCami, web client, AI, chameleon">
+    <meta name="description" content="OpenCami is a feature-rich web client for OpenClaw with image attachments, conversation search, keyboard shortcuts, smart AI titles, and more.">
+    <meta name="keywords" content="OpenClaw, OpenCami, web client, AI, chameleon, WebClaw">
     
     <!-- Open Graph -->
     <meta property="og:title" content="OpenCami 🦎 - Web Client for OpenClaw">
     <meta property="og:description" content="A batteries-included web client for OpenClaw with smart features.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opencami.xyz">
+    <meta property="og:image" content="https://opencami.xyz/logo.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OpenCami 🦎 - Web Client for OpenClaw">
+    <meta name="twitter:description" content="A batteries-included web client for OpenClaw with smart features.">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦎</text></svg>">
@@ -19,21 +25,45 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --leaf: #2d5a27;
-            --forest: #1a3518;
-            --lime: #84cc16;
-            --mint: #a7f3d0;
-            --cream: #fefdf8;
-            --bark: #3d2914;
-            --moss: #4a7c47;
-            --glow: #bef264;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --bg-card-hover: #1a1a25;
+            --border: #2a2a3a;
+            --border-light: #3a3a4a;
             
-            --font-heading: 'Space Grotesk', system-ui, sans-serif;
-            --font-body: 'DM Sans', system-ui, sans-serif;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #707080;
+            
+            --accent-green: #22c55e;
+            --accent-green-dim: #16a34a;
+            --accent-lime: #84cc16;
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #a855f7;
+            --accent-pink: #ec4899;
+            --accent-orange: #f97316;
+            --accent-yellow: #eab308;
+            
+            --gradient-green: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            --gradient-lime: linear-gradient(135deg, #84cc16 0%, #22c55e 100%);
+            --gradient-rainbow: linear-gradient(135deg, #22c55e, #10b981, #06b6d4, #a855f7);
+            
+            --glow-green: 0 0 40px rgba(34, 197, 94, 0.3);
+            --glow-lime: 0 0 40px rgba(132, 204, 22, 0.3);
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
         }
         
         * {
@@ -47,27 +77,56 @@
         }
         
         body {
-            font-family: var(--font-body);
-            background: var(--cream);
-            color: var(--forest);
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
         
-        /* Animated background */
-        .bg-pattern {
+        /* Background effects */
+        .bg-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
-            opacity: 0.03;
+            z-index: -2;
             background-image: 
-                radial-gradient(circle at 20% 30%, var(--leaf) 1px, transparent 1px),
-                radial-gradient(circle at 80% 70%, var(--moss) 1px, transparent 1px);
-            background-size: 60px 60px;
+                linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -30%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(132, 204, 22, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
         
         /* Header */
@@ -76,11 +135,11 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 1rem 2rem;
-            background: rgba(254, 253, 248, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
             z-index: 100;
-            border-bottom: 1px solid rgba(45, 90, 39, 0.1);
         }
         
         nav {
@@ -92,40 +151,48 @@
         }
         
         .logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--leaf);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 12px;
+            text-decoration: none;
         }
         
-        .logo:hover .chameleon {
-            transform: scale(1.2) rotate(10deg);
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            object-fit: cover;
         }
         
-        .chameleon {
-            display: inline-block;
-            transition: transform 0.3s ease;
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .logo-text span {
+            background: var(--gradient-lime);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 32px;
             list-style: none;
         }
         
         .nav-links a {
-            color: var(--forest);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.2s;
         }
         
         .nav-links a:hover {
-            color: var(--lime);
+            color: var(--accent-green);
         }
         
         /* Hero */
@@ -136,124 +203,210 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 8rem 2rem 4rem;
+            padding: 120px 24px 80px;
             position: relative;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--mint) 0%, transparent 70%);
-            opacity: 0.4;
-            z-index: -1;
-            animation: pulse 8s ease-in-out infinite;
+        .hero-logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--glow-green);
+            animation: float 6s ease-in-out infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
-            50% { transform: translateX(-50%) scale(1.1); opacity: 0.3; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            margin-bottom: 24px;
+        }
+        
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
         
         .hero-title {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 700;
-            color: var(--forest);
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
         }
         
-        .hero-title .chameleon {
-            animation: wiggle 3s ease-in-out infinite;
-        }
-        
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            75% { transform: rotate(-5deg); }
+        .hero-title .gradient {
+            background: var(--gradient-rainbow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: var(--moss);
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-secondary);
+            margin-bottom: 16px;
             font-weight: 500;
         }
         
         .hero-tagline {
-            font-size: 1.1rem;
-            color: var(--bark);
-            max-width: 500px;
-            margin-bottom: 2.5rem;
-            opacity: 0.8;
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin-bottom: 40px;
         }
         
-        .cta-button {
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: var(--leaf);
-            color: var(--cream);
-            text-decoration: none;
-            font-family: var(--font-heading);
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 1.1rem;
-            border-radius: 50px;
+            font-size: 1rem;
+            text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(45, 90, 39, 0.3);
+            cursor: pointer;
+            border: none;
         }
         
-        .cta-button:hover {
-            background: var(--moss);
+        .btn-primary {
+            background: var(--gradient-green);
+            color: white;
+            box-shadow: var(--glow-green);
+        }
+        
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(45, 90, 39, 0.4);
+            box-shadow: 0 0 60px rgba(34, 197, 94, 0.4);
         }
         
-        .cta-button svg {
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-light);
+        }
+        
+        .btn svg {
             width: 20px;
             height: 20px;
         }
         
-        /* Features */
-        .features {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, var(--cream) 0%, rgba(167, 243, 208, 0.2) 100%);
+        /* Quick Stats */
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 24px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(132, 204, 22, 0.1);
+            border: 1px solid rgba(132, 204, 22, 0.2);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-lime);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
         
         .section-title {
-            font-family: var(--font-heading);
             font-size: clamp(2rem, 5vw, 3rem);
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--forest);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
         
         .section-subtitle {
-            text-align: center;
-            color: var(--moss);
-            margin-bottom: 4rem;
             font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Features Section */
+        .features {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
         }
         
         .features-grid {
-            max-width: 1000px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(45, 90, 39, 0.1);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -264,141 +417,438 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--lime), var(--moss));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent, var(--gradient-green));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.1);
+            background: var(--bg-card-hover);
+            border-color: var(--border-light);
+            transform: translateY(-4px);
         }
         
         .feature-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
         
-        .feature-emoji {
+        .feature-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
+            line-height: 1;
+        }
+        
+        .feature-title-wrapper {
+            flex: 1;
         }
         
         .feature-title {
-            font-family: var(--font-heading);
             font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-version {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+            border-radius: 6px;
             font-weight: 600;
-            color: var(--forest);
-            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+        }
+        
+        .feature-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
         
         .feature-desc {
-            color: var(--bark);
-            opacity: 0.8;
+            color: var(--text-secondary);
             font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.7;
         }
         
-        /* About */
-        .about {
-            padding: 6rem 2rem;
+        /* Feature Details */
+        .feature-details {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-details-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .detail-item .check {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+        
+        /* Keyboard Shortcuts Table */
+        .shortcuts-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .shortcuts-table td {
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+        
+        .shortcuts-table td:first-child {
+            color: var(--text-muted);
+        }
+        
+        .kbd {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        /* Code Block */
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+        
+        .code-line {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        
+        .code-line:last-child {
+            margin-bottom: 0;
+        }
+        
+        .code-prompt {
+            color: var(--accent-green);
+        }
+        
+        .code-comment {
+            color: var(--text-muted);
+        }
+        
+        .code-string {
+            color: var(--accent-lime);
+        }
+        
+        .code-keyword {
+            color: var(--accent-purple);
+        }
+        
+        /* Pills */
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .pill {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .pill.accent {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: var(--accent-green);
+        }
+        
+        /* Use Cases */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .use-case {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 12px;
             text-align: center;
         }
         
-        .about-content {
+        .use-case-icon {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+        
+        .use-case-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        /* Technical Section */
+        .technical {
+            background: var(--bg-secondary);
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+        }
+        
+        .tech-card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        
+        .tech-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .tech-card-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tech-tag {
+            padding: 4px 10px;
+            background: rgba(132, 204, 22, 0.1);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-lime);
+        }
+        
+        /* Links Section */
+        .links-section {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(34, 197, 94, 0.05) 100%);
+        }
+        
+        .links-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
+        .link-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.15);
+        }
+        
+        .link-card svg {
+            width: 28px;
+            height: 28px;
+            color: var(--accent-green);
+        }
+        
+        .link-card-text {
+            font-weight: 600;
+        }
+        
+        .link-card-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        /* About Section */
+        .about {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+        
+        .about-card {
             max-width: 600px;
             margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 48px;
         }
         
         .about-avatar {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, var(--lime), var(--leaf));
             border-radius: 50%;
+            margin: 0 auto 24px;
+            background: var(--gradient-green);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            margin: 0 auto 2rem;
-            box-shadow: 0 10px 30px rgba(132, 204, 22, 0.3);
+            box-shadow: var(--glow-green);
         }
         
         .about-quote {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-style: italic;
-            color: var(--forest);
-            margin-bottom: 1rem;
-            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        
+        .about-name {
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 8px;
         }
         
         .about-location {
-            color: var(--moss);
-            font-weight: 500;
-        }
-        
-        /* Links */
-        .links {
-            padding: 4rem 2rem;
-            background: var(--forest);
-            color: var(--cream);
-        }
-        
-        .links-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .link-item {
+            color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            color: var(--cream);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            justify-content: center;
+            gap: 8px;
         }
         
-        .link-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
         
-        .link-item svg {
-            width: 24px;
-            height: 24px;
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .cta-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .cta-desc {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        
+        .cta-code {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px 32px;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--accent-lime);
+            margin-bottom: 24px;
         }
         
         /* Footer */
         footer {
-            padding: 2rem;
-            background: var(--bark);
-            color: var(--cream);
+            padding: 40px 24px;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
             text-align: center;
         }
         
         .footer-love {
             font-size: 1rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        
+        .footer-love .heart {
+            color: var(--accent-green);
         }
         
         .footer-copy {
             font-size: 0.85rem;
-            opacity: 0.7;
+            color: var(--text-muted);
         }
         
-        /* Mobile */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             header {
-                padding: 1rem;
+                padding: 12px 16px;
             }
             
             .nav-links {
@@ -406,11 +856,29 @@
             }
             
             .hero {
-                padding: 6rem 1.5rem 3rem;
+                padding: 100px 16px 60px;
             }
             
-            .features, .about {
-                padding: 4rem 1.5rem;
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            section {
+                padding: 60px 16px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-grid {
+                grid-template-columns: 1fr;
             }
             
             .links-grid {
@@ -418,14 +886,17 @@
                 align-items: center;
             }
             
-            .link-item {
+            .link-card {
                 width: 100%;
                 max-width: 300px;
-                justify-content: center;
+            }
+            
+            .about-card {
+                padding: 32px 24px;
             }
         }
         
-        /* Scroll animations */
+        /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -436,19 +907,29 @@
             opacity: 1;
             transform: translateY(0);
         }
-    .hero-logo { width: 150px; height: auto; margin-bottom: 1rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
-        </style>
+        
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+    </style>
 </head>
 <body>
-    <div class="bg-pattern"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
     
     <header>
         <nav>
             <a href="#" class="logo">
-                Open<span style="color: var(--lime)">Cami</span> <span class="chameleon">🦎</span>
+                <img src="logo.png" alt="OpenCami Logo" class="logo-img">
+                <span class="logo-text">Open<span>Cami</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
+                <li><a href="#technical">Technical</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="https://github.com/robbyczgw-cla/opencami" target="_blank">GitHub</a></li>
             </ul>
@@ -457,87 +938,438 @@
     
     <main>
         <section class="hero">
-            <h1 class="hero-title">OpenCami <span class="chameleon">🦎</span></h1>
+            <img src="logo.png" alt="OpenCami Chameleon" class="hero-logo">
+            
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Built on WebClaw
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="gradient">OpenCami</span> 🦎
+            </h1>
+            
             <p class="hero-subtitle">A batteries-included web client for OpenClaw</p>
-            <p class="hero-tagline">Image attachments, conversation search, keyboard shortcuts, smart titles, and more — all in one sleek interface.</p>
-            <a href="https://github.com/robbyczgw-cla/opencami" class="cta-button" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                Try it on GitHub
-            </a>
+            
+            <p class="hero-tagline">
+                Image attachments, conversation search, keyboard shortcuts, smart AI titles, export options, and intelligent follow-ups — all in one sleek, modern interface.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="https://github.com/robbyczgw-cla/opencami" class="btn btn-primary" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+                <a href="https://openclaw.ai" class="btn btn-secondary" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Get OpenClaw
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">6+</div>
+                    <div class="stat-label">Core Features</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Export Formats</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label">Conversations</div>
+                </div>
+            </div>
         </section>
         
         <section id="features" class="features">
-            <h2 class="section-title">Features</h2>
-            <p class="section-subtitle">Everything you need, nothing you don't</p>
-            
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <span class="feature-emoji">🖼️</span>
-                    <h3 class="feature-title">Image Attachments</h3>
-                    <p class="feature-desc">Drop images right into your conversations. Smart compression keeps things fast without losing quality.</p>
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">✨ Features</div>
+                    <h2 class="section-title">Everything You Need, Nothing You Don't</h2>
+                    <p class="section-subtitle">
+                        Each feature is carefully crafted to enhance your AI conversations without getting in the way.
+                    </p>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <span class="feature-emoji">🔍</span>
-                    <h3 class="feature-title">Conversation Search</h3>
-                    <p class="feature-desc">Find that one message from three weeks ago. Full-text search across all your conversations.</p>
+                <div class="features-grid">
+                    <!-- Image Attachments -->
+                    <div class="feature-card fade-in stagger-1" style="--card-accent: linear-gradient(135deg, #f97316, #eab308);">
+                        <div class="feature-header">
+                            <span class="feature-icon">🖼️</span>
+                            <div class="feature-title-wrapper">
+                                <h3 class="feature-title">
+                                    Image Attachments
+                                    <span class="feature-version">Vision</span>
+                                </h3>
+                                <p class="feature-subtitle">Drop, paste, or click to add</p>
+                            </div>
+                        </div>
+                        
+                        <p class="feature-desc">
+                            Share images directly in your conversations. Smart compression keeps uploads fast without sacrificing quality — perfect for screenshots, diagrams, photos, and visual context.
+                        </p>
+                        
+                        <div class="feature-details">
+                            <div class="feature-details-title">Capabilities</div>
+                            <div class="detail-grid">
+                                <div class="detail-item"><span class="check">✓</span> Drag & drop upload</div>
+                                <div class="detail-item"><span class="check">✓</span> Clipboard paste</div>
+                                <div class="detail-item"><span class="check">✓</span> Smart compression</div>
+                                <div class="detail-item"><span class="check">✓</span> Multiple images</div>
+                                <div class="detail-item"><span class="check">✓</span> Preview before send</div>
+                                <div class="detail-item"><span class="check">✓</span> Vision model support</div>
+                            </div>
+                        </div>
+                        
+                        <div class="use-cases">
+                            <div class="use-case">
+                                <div class="use-case-icon">📸</div>
+                                <div class="use-case-text">Screenshots</div>
+                            </div>
+                            <div class="use-case">
+                                <div class="use-case-icon">📊</div>
+                                <div class="use-case-text">Charts</div>
+                            </div>
+                            <div class="use-case">
+                                <div class="use-case-icon">🎨</div>
+                                <div class="use-case-text">Designs</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Conversation Search -->
+                    <div class="feature-card fade-in stagger-2" style="--card-accent: linear-gradient(135deg, #06b6d4, #3b82f6);">
+                        <div class="feature-header">
+                            <span class="feature-icon">🔍</span>
+                            <div class="feature-title-wrapper">
+                                <h3 class="feature-title">
+                                    Conversation Search
+                                    <span class="feature-version">Full-text</span>
+                                </h3>
+                                <p class="feature-subtitle">Find anything, instantly</p>
+                            </div>
+                        </div>
+                        
+                        <p class="feature-desc">
+                            Find that one message from three weeks ago. Full-text search across all your conversations with instant results. Search titles or dive deep into message content.
+                        </p>
+                        
+                        <div class="feature-details">
+                            <div class="feature-details-title">Keyboard Shortcuts</div>
+                            <table class="shortcuts-table">
+                                <tr>
+                                    <td>Search conversations</td>
+                                    <td><span class="kbd">⌘</span><span class="kbd">F</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Deep search (messages)</td>
+                                    <td><span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">F</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Clear search</td>
+                                    <td><span class="kbd">Esc</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="pills">
+                            <span class="pill">Title search</span>
+                            <span class="pill">Message search</span>
+                            <span class="pill">Instant results</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Keyboard Shortcuts -->
+                    <div class="feature-card fade-in stagger-3" style="--card-accent: linear-gradient(135deg, #a855f7, #ec4899);">
+                        <div class="feature-header">
+                            <span class="feature-icon">⌨️</span>
+                            <div class="feature-title-wrapper">
+                                <h3 class="feature-title">
+                                    Keyboard Shortcuts
+                                    <span class="feature-version">Power User</span>
+                                </h3>
+                                <p class="feature-subtitle">Navigate without touching your mouse</p>
+                            </div>
+                        </div>
+                        
+                        <p class="feature-desc">
+                            Power-user friendly from day one. Navigate conversations, send messages, create new chats, and manage your workspace — all without leaving the keyboard.
+                        </p>
+                        
+                        <div class="feature-details">
+                            <div class="feature-details-title">Essential Shortcuts</div>
+                            <table class="shortcuts-table">
+                                <tr>
+                                    <td>New conversation</td>
+                                    <td><span class="kbd">⌘</span><span class="kbd">N</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Send message</td>
+                                    <td><span class="kbd">⌘</span><span class="kbd">↵</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Toggle sidebar</td>
+                                    <td><span class="kbd">⌘</span><span class="kbd">B</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Delete conversation</td>
+                                    <td><span class="kbd">⌘</span><span class="kbd">⌫</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Export -->
+                    <div class="feature-card fade-in stagger-4" style="--card-accent: linear-gradient(135deg, #22c55e, #10b981);">
+                        <div class="feature-header">
+                            <span class="feature-icon">📥</span>
+                            <div class="feature-title-wrapper">
+                                <h3 class="feature-title">
+                                    Export Conversations
+                                    <span class="feature-version">Multi-format</span>
+                                </h3>
+                                <p class="feature-subtitle">Your data is yours</p>
+                            </div>
+                        </div>
+                        
+                        <p class="feature-desc">
+                            Export any conversation in the format you need. Whether you're archiving, sharing, or processing data — we've got you covered with multiple export options.
+                        </p>
+                        
+                        <div class="feature-details">
+                            <div class="feature-details-title">Available Formats</div>
+                            <div class="pills">
+                                <span class="pill accent">📝 Markdown (.md)</span>
+                                <span class="pill accent">📋 JSON (.json)</span>
+                                <span class="pill accent">📄 Plain Text (.txt)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="code-block" style="margin-top: 16px;">
+                            <div class="code-line">
+                                <span class="code-comment"># Example export structure</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-keyword">export</span>
+                                <span class="code-string">"conversation-2026-02-05.md"</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Smart AI Titles -->
+                    <div class="feature-card fade-in stagger-5" style="--card-accent: linear-gradient(135deg, #eab308, #f97316);">
+                        <div class="feature-header">
+                            <span class="feature-icon">🏷️</span>
+                            <div class="feature-title-wrapper">
+                                <h3 class="feature-title">
+                                    Smart AI Titles
+                                    <span class="feature-version">LLM-powered</span>
+                                </h3>
+                                <p class="feature-subtitle">No more "New Chat #47"</p>
+                            </div>
+                        </div>
+                        
+                        <p class="feature-desc">
+                            Automatically generated titles that actually describe what you discussed. Powered by LLMs with intelligent fallback — your conversations are always well-organized.
+                        </p>
+                        
+                        <div class="feature-details">
+                            <div class="feature-details-title">Model Fallback Chain</div>
+                            <div class="code-block">
+                                <div class="code-line">
+                                    <span class="code-prompt">1.</span>
+                                    <span>claude-3-5-haiku</span>
+                                    <span class="code-comment">// Primary</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="code-prompt">2.</span>
+                                    <span>gpt-4o-mini</span>
+                                    <span class="code-comment">// Fallback</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="code-prompt">3.</span>
+                                    <span>gemini-2.0-flash</span>
+                                    <span class="code-comment">// Last resort</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pills" style="margin-top: 16px;">
+                            <span class="pill">Context-aware</span>
+                            <span class="pill">Multi-model</span>
+                            <span class="pill">Auto-retry</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Smart Follow-ups -->
+                    <div class="feature-card fade-in stagger-6" style="--card-accent: linear-gradient(135deg, #84cc16, #22c55e);">
+                        <div class="feature-header">
+                            <span class="feature-icon">💡</span>
+                            <div class="feature-title-wrapper">
+                                <h3 class="feature-title">
+                                    Smart Follow-ups
+                                    <span class="feature-version">Intelligent</span>
+                                </h3>
+                                <p class="feature-subtitle">Keep the conversation flowing</p>
+                            </div>
+                        </div>
+                        
+                        <p class="feature-desc">
+                            Contextual suggestions for what to ask next. Starts with fast heuristic suggestions, then seamlessly upgrades to LLM-generated follow-ups for deeper conversations.
+                        </p>
+                        
+                        <div class="feature-details">
+                            <div class="feature-details-title">How It Works</div>
+                            <div class="code-block">
+                                <div class="code-line">
+                                    <span class="code-prompt">→</span>
+                                    <span class="code-string">"Tell me more about..."</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="code-prompt">→</span>
+                                    <span class="code-string">"How does this compare to..."</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="code-prompt">→</span>
+                                    <span class="code-string">"Can you give an example?"</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pills" style="margin-top: 16px;">
+                            <span class="pill accent">⚡ Quick Start</span>
+                            <span class="pill">Heuristic → LLM</span>
+                            <span class="pill">One-click send</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="technical" class="technical">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">🔧 Technical</div>
+                    <h2 class="section-title">Built for the OpenClaw Ecosystem</h2>
+                    <p class="section-subtitle">
+                        Modern architecture with seamless gateway integration and intelligent model routing.
+                    </p>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <span class="feature-emoji">⌨️</span>
-                    <h3 class="feature-title">Keyboard Shortcuts</h3>
-                    <p class="feature-desc">Power-user friendly. Navigate, send, and manage without leaving your keyboard.</p>
+                <div class="tech-grid">
+                    <div class="tech-card fade-in">
+                        <div class="tech-card-icon">🌐</div>
+                        <h3 class="tech-card-title">Built on WebClaw</h3>
+                        <p class="tech-card-desc">
+                            Modern web foundation with React, TypeScript, and real-time streaming. Fast, responsive, and works everywhere.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Streaming</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-card fade-in">
+                        <div class="tech-card-icon">⚡</div>
+                        <h3 class="tech-card-title">OpenClaw Gateway</h3>
+                        <p class="tech-card-desc">
+                            Direct integration with OpenClaw Gateway for unified API access across multiple AI providers with automatic failover.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Multi-provider</span>
+                            <span class="tech-tag">Auto-failover</span>
+                            <span class="tech-tag">Unified API</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-card fade-in">
+                        <div class="tech-card-icon">🧠</div>
+                        <h3 class="tech-card-title">Model Fallback Chain</h3>
+                        <p class="tech-card-desc">
+                            Intelligent model selection with automatic fallback. If one model is unavailable, seamlessly switch to the next best option.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Claude</span>
+                            <span class="tech-tag">GPT-4</span>
+                            <span class="tech-tag">Gemini</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="links-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge">🔗 Links</div>
+                    <h2 class="section-title">Part of the OpenClaw Family</h2>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <span class="feature-emoji">📥</span>
-                    <h3 class="feature-title">Export Conversations</h3>
-                    <p class="feature-desc">Your data is yours. Export any conversation in multiple formats whenever you need.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <span class="feature-emoji">🏷️</span>
-                    <h3 class="feature-title">Smart AI Titles</h3>
-                    <p class="feature-desc">No more "New Chat #47". Auto-generated titles that actually describe what you discussed.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <span class="feature-emoji">💡</span>
-                    <h3 class="feature-title">Smart Follow-ups</h3>
-                    <p class="feature-desc">Suggested prompts based on context. Keep the conversation flowing naturally.</p>
+                <div class="links-grid">
+                    <a href="https://github.com/robbyczgw-cla/opencami" class="link-card fade-in" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <div>
+                            <div class="link-card-text">GitHub</div>
+                            <div class="link-card-sub">Source code</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://openclawskills.xyz" class="link-card fade-in" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <div>
+                            <div class="link-card-text">OpenClaw Skills</div>
+                            <div class="link-card-sub">Skill marketplace</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://openclaw.ai" class="link-card fade-in" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <div>
+                            <div class="link-card-text">OpenClaw</div>
+                            <div class="link-card-sub">Main platform</div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
         
         <section id="about" class="about">
-            <div class="about-content fade-in">
-                <div class="about-avatar">🦎</div>
-                <p class="about-quote">"Building the OpenClaw ecosystem: Skills, PRs, and OpenCami."</p>
-                <p class="about-location">📍 Clawiverse 🦎</p>
+            <div class="container">
+                <div class="about-card fade-in">
+                    <div class="about-avatar">🦎</div>
+                    <p class="about-quote">
+                        "Building the OpenClaw ecosystem: Skills, PRs, and OpenCami."
+                    </p>
+                    <p class="about-name">OpenCami Team</p>
+                    <p class="about-location">
+                        📍 Clawiverse 🦎
+                    </p>
+                </div>
             </div>
         </section>
         
-        <section class="links">
-            <div class="links-grid">
-                <a href="https://github.com/robbyczgw-cla/opencami" class="link-item" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://openclawskills.xyz" class="link-item" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    OpenClaw Skills
-                </a>
-                <a href="https://openclaw.ai" class="link-item" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    OpenClaw
-                </a>
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content fade-in">
+                    <div class="cta-icon">🦞</div>
+                    <h2 class="cta-title">Ready to Try OpenCami?</h2>
+                    <p class="cta-desc">
+                        Open source, well-documented, and ready to enhance your AI conversations.
+                    </p>
+                    <a href="https://github.com/robbyczgw-cla/opencami" class="btn btn-primary" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        Get Started on GitHub
+                    </a>
+                </div>
             </div>
         </section>
     </main>
     
     <footer>
-        <p class="footer-love">Made with 💚 in the Clawiverse</p>
-        <p class="footer-copy">© 2026 OpenCami</p>
+        <p class="footer-love">Made with <span class="heart">💚</span> in the Clawiverse</p>
+        <p class="footer-copy">© 2026 OpenCami • Part of the OpenClaw ecosystem</p>
     </footer>
     
     <script>
