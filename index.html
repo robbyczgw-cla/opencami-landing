@@ -499,6 +499,7 @@
         .feature-card:nth-child(4) { --card-accent: linear-gradient(135deg, #22c55e, #84cc16); border-color: rgba(34, 197, 94, 0.2); }
         .feature-card:nth-child(5) { --card-accent: linear-gradient(135deg, #eab308, #f97316); border-color: rgba(234, 179, 8, 0.2); }
         .feature-card:nth-child(6) { --card-accent: linear-gradient(135deg, #84cc16, #22c55e); border-color: rgba(132, 204, 22, 0.2); }
+        .feature-card:nth-child(7) { --card-accent: linear-gradient(135deg, #06b6d4, #a855f7); border-color: rgba(6, 182, 212, 0.2); }
         
         .feature-header {
             display: flex;
@@ -1042,7 +1043,7 @@
             <p class="hero-subtitle">A feature-rich web client for OpenClaw</p>
             
             <p class="hero-tagline">
-                Voice playback, persona picker, model switching, PWA support, image attachments, smart titles, and more — all in one sleek, modern interface.
+                Real-time streaming, voice playback, persona picker, model switching, PWA support, image attachments, smart titles, and more — all in one sleek, modern interface.
             </p>
             
             <div class="hero-buttons">
@@ -1058,7 +1059,7 @@
             
             <div class="hero-stats">
                 <div class="stat">
-                    <div class="stat-value">12+</div>
+                    <div class="stat-value">13+</div>
                     <div class="stat-label">Features</div>
                 </div>
                 <div class="stat">
@@ -1088,8 +1089,28 @@
                 </div>
                 
                 <div class="features-grid">
-                    <!-- Image Attachments -->
+                    <!-- Real-Time Streaming -->
                     <div class="feature-card fade-in stagger-1">
+                        <div class="feature-header">
+                            <span class="feature-icon">⚡</span>
+                            <div class="feature-title-wrapper">
+                                <h3 class="feature-title">
+                                    Real-Time Streaming
+                                    <span class="feature-version">NEW</span>
+                                </h3>
+                                <p class="feature-subtitle">Token-by-token, as it thinks</p>
+                            </div>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Watch responses appear in real-time</li>
+                            <li>Persistent WebSocket → SSE architecture</li>
+                            <li>Tool call indicators during processing</li>
+                            <li>Smart fallback to polling if needed</li>
+                        </ul>
+                    </div>
+
+                    <!-- Image Attachments -->
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">🖼️</span>
                             <div class="feature-title-wrapper">
@@ -1134,7 +1155,7 @@
                     </div>
                     
                     <!-- Conversation Search -->
-                    <div class="feature-card fade-in stagger-2">
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">🔍</span>
                             <div class="feature-title-wrapper">
@@ -1176,7 +1197,7 @@
                     </div>
                     
                     <!-- Keyboard Shortcuts -->
-                    <div class="feature-card fade-in stagger-3">
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">⌨️</span>
                             <div class="feature-title-wrapper">
@@ -1216,7 +1237,7 @@
                     </div>
                     
                     <!-- Export -->
-                    <div class="feature-card fade-in stagger-4">
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">📥</span>
                             <div class="feature-title-wrapper">
@@ -1253,7 +1274,7 @@
                     </div>
                     
                     <!-- Smart AI Titles -->
-                    <div class="feature-card fade-in stagger-5">
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">🏷️</span>
                             <div class="feature-title-wrapper">
@@ -1272,7 +1293,7 @@
                     </div>
                     
                     <!-- Smart Follow-ups - HERO FEATURE -->
-                    <div class="feature-card fade-in stagger-6" style="--card-accent: linear-gradient(135deg, #84cc16, #22c55e, #14b8a6); grid-column: span 1;">
+                    <div class="feature-card fade-in stagger-7" style="--card-accent: linear-gradient(135deg, #84cc16, #22c55e, #14b8a6); grid-column: span 1;">
                         <div class="feature-header">
                             <span class="feature-icon">💡</span>
                             <div class="feature-title-wrapper">
@@ -1355,7 +1376,7 @@
                     </div>
                     
                     <!-- Persona Picker -->
-                    <div class="feature-card fade-in stagger-2">
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">🎭</span>
                             <div class="feature-title-wrapper">
@@ -1385,7 +1406,7 @@
                     </div>
                     
                     <!-- Model Selector -->
-                    <div class="feature-card fade-in stagger-3">
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">🎨</span>
                             <div class="feature-title-wrapper">
@@ -1413,7 +1434,7 @@
                     </div>
                     
                     <!-- PWA -->
-                    <div class="feature-card fade-in stagger-4">
+                    <div class="feature-card fade-in stagger-7">
                         <div class="feature-header">
                             <span class="feature-icon">📱</span>
                             <div class="feature-title-wrapper">
