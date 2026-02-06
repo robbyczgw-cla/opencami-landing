@@ -12,7 +12,7 @@
     <meta property="og:description" content="A feature-rich web client for OpenClaw with smart features.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opencami.xyz">
-    <meta property="og:image" content="https://opencami.xyz/logo.png">
+    <meta property="og:image" content="https://opencami.xyz/screenshots/opencami-chat.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -378,6 +378,29 @@
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 4px;
+        }
+        
+        /* Hero Screenshot */
+        .hero-screenshot {
+            margin-top: 60px;
+            max-width: 900px;
+            width: 100%;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--glow-rainbow), 0 20px 60px rgba(0, 0, 0, 0.12);
+            border: 2px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hero-screenshot:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow-rainbow), 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         /* Section Styles */
@@ -1046,6 +1069,11 @@
                     <div class="stat-value">∞</div>
                     <div class="stat-label">Conversations</div>
                 </div>
+            </div>
+            
+            <!-- App Screenshot -->
+            <div class="hero-screenshot fade-in">
+                <img src="screenshots/opencami-chat.jpg" alt="OpenCami Chat Interface" loading="lazy">
             </div>
         </section>
         
