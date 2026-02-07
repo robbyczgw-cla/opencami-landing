@@ -53,9 +53,7 @@
         .logo-img { width:36px; height:36px; border-radius:9px; object-fit:cover; }
         .logo-text { font-size:1.3rem; font-weight:700; color:var(--text); }
         .logo-text span { background:var(--grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .nav-links { display:flex; gap:28px; list-style:none; }
-        .nav-links a { color:var(--text2); text-decoration:none; font-weight:500; font-size:.9rem; transition:color .2s; }
-        .nav-links a:hover { color:var(--green); }
+        /* nav-links removed — links moved to footer */
 
         /* Hero */
         .hero { display:flex; flex-direction:column; align-items:center; text-align:center; padding:96px 24px 32px; }
@@ -166,13 +164,17 @@
         .link svg { width:18px; height:18px; color:var(--green); }
 
         /* Footer */
-        footer { padding:24px; border-top:1px solid var(--border); text-align:center; font-size:.82rem; color:var(--muted); margin-top:48px; }
-        footer a { color:var(--green); text-decoration:none; }
+        footer { padding:28px 24px; border-top:1px solid var(--border); text-align:center; color:var(--muted); margin-top:48px; }
+        footer a { color:var(--green); text-decoration:none; font-weight:500; transition:color .2s; }
+        footer a:hover { color:var(--green-dim); }
+        .footer-links { display:flex; justify-content:center; align-items:center; gap:12px; font-size:.9rem; margin-bottom:8px; }
+        .footer-dot { color:var(--border); }
+        .footer-sub { font-size:.8rem; }
         .fh { background:var(--grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
         /* Mobile */
         @media(max-width:768px) {
-            .nav-links { display:none; }
+            /* mobile: nav-links removed */
             .hero { padding:80px 16px 24px; }
             .hero-logo { width:76px; height:76px; }
             .h-grid { grid-template-columns:repeat(2,1fr); gap:7px; }
@@ -196,11 +198,6 @@
 
     <header><nav>
         <a href="#" class="logo"><img src="logo.png" alt="OpenCami" class="logo-img"><span class="logo-text">Open<span>Cami</span></span></a>
-        <ul class="nav-links">
-            <li><a href="https://github.com/robbyczgw-cla/opencami" target="_blank">GitHub</a></li>
-            <li><a href="https://openclaw.ai" target="_blank">OpenClaw</a></li>
-            <li><a href="https://discord.com/invite/clawd" target="_blank">Discord</a></li>
-        </ul>
     </nav></header>
 
     <main>
@@ -352,7 +349,18 @@
         </section>
     </main>
 
-    <footer>Built with <span class="fh">💚</span> in the Clawiverse · Forked from <a href="https://github.com/ibelick/webclaw" target="_blank">WebClaw</a></footer>
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/robbyczgw-cla/opencami" target="_blank">GitHub</a>
+            <span class="footer-dot">·</span>
+            <a href="https://openclaw.ai" target="_blank">OpenClaw</a>
+            <span class="footer-dot">·</span>
+            <a href="https://discord.com/invite/clawd" target="_blank">Discord</a>
+            <span class="footer-dot">·</span>
+            <a href="https://x.com/robbyczgw" target="_blank">𝕏</a>
+        </div>
+        <div class="footer-sub">Built with <span class="fh">💚</span> in the Clawiverse · Forked from <a href="https://github.com/ibelick/webclaw" target="_blank">WebClaw</a></div>
+    </footer>
 
     <script>
         document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{
