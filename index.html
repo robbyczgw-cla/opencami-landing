@@ -84,16 +84,13 @@
         .screenshot:hover { transform:translateY(-3px); }
         .screenshot img { width:100%; height:auto; display:block; }
 
-        /* Feature Highlights — directly on landing */
-        .highlights { max-width:1100px; margin:40px auto 0; padding:0 24px; }
-        .highlights-title { text-align:center; font-size:1.1rem; font-weight:700; color:var(--text2); margin-bottom:20px; }
-        .highlights-title span { background:var(--grad-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .h-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
-        .h-item { display:flex; align-items:center; gap:8px; padding:12px 14px; background:var(--card);
-            border:1.5px solid var(--border); border-radius:10px; transition:all .2s; cursor:default; }
-        .h-item:hover { background:var(--card-hover); border-color:var(--green); transform:translateY(-2px); box-shadow:0 4px 16px rgba(34,197,94,.08); }
-        .h-icon { font-size:1.25rem; flex-shrink:0; }
-        .h-label { font-size:.78rem; font-weight:600; color:var(--text); line-height:1.2; }
+        /* Highlights — 4 key differentiators */
+        .highlights { max-width:900px; margin:44px auto 0; padding:0 24px; }
+        .hl-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+        .hl-item { text-align:center; padding:20px 14px; }
+        .hl-icon { font-size:2rem; margin-bottom:10px; }
+        .hl-title { font-size:.88rem; font-weight:700; margin-bottom:4px; }
+        .hl-desc { font-size:.78rem; color:var(--muted); line-height:1.4; }
 
         /* Divider + Tabs */
         .tab-section { max-width:1100px; margin:48px auto 0; padding:0 24px; }
@@ -177,9 +174,8 @@
             /* mobile: nav-links removed */
             .hero { padding:80px 16px 24px; }
             .hero-logo { width:76px; height:76px; }
-            .h-grid { grid-template-columns:repeat(2,1fr); gap:7px; }
-            .h-item { padding:10px; }
-            .h-label { font-size:.72rem; }
+            .hl-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
+            .hl-item { padding:14px 10px; }
             .tab-section { padding:0 16px; }
             .tab-bar { overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
             .tab-bar::-webkit-scrollbar { display:none; }
@@ -189,7 +185,7 @@
             .links { flex-direction:column; align-items:center; }
         }
         @media(max-width:480px) {
-            .h-grid { grid-template-columns:repeat(2,1fr); }
+            .hl-grid { grid-template-columns:repeat(2,1fr); }
         }
     </style>
 </head>
@@ -219,30 +215,29 @@
             <div class="screenshot"><img src="screenshots/opencami-chat.jpg" alt="OpenCami Chat Interface" loading="lazy"></div>
         </section>
 
-        <!-- FEATURE HIGHLIGHTS — on the landing page itself -->
+        <!-- 4 KEY HIGHLIGHTS -->
         <section class="highlights">
-            <p class="highlights-title"><span>20+ Features</span> — built for desktop power users</p>
-            <div class="h-grid">
-                <div class="h-item"><span class="h-icon">⚡</span><span class="h-label">Real-Time Streaming</span></div>
-                <div class="h-item"><span class="h-icon">🔊</span><span class="h-label">Voice Playback</span></div>
-                <div class="h-item"><span class="h-icon">🎭</span><span class="h-label">Persona Picker</span></div>
-                <div class="h-item"><span class="h-icon">🎨</span><span class="h-label">Model Selector</span></div>
-                <div class="h-item"><span class="h-icon">🔍</span><span class="h-label">Full-Text Search</span></div>
-                <div class="h-item"><span class="h-icon">⌨️</span><span class="h-label">Keyboard Shortcuts</span></div>
-                <div class="h-item"><span class="h-icon">📥</span><span class="h-label">Export MD/JSON/TXT</span></div>
-                <div class="h-item"><span class="h-icon">🖼️</span><span class="h-label">Image Attachments</span></div>
-                <div class="h-item"><span class="h-icon">📂</span><span class="h-label">File Explorer</span></div>
-                <div class="h-item"><span class="h-icon">🏷️</span><span class="h-label">Smart AI Titles</span></div>
-                <div class="h-item"><span class="h-icon">💡</span><span class="h-label">Smart Follow-ups</span></div>
-                <div class="h-item"><span class="h-icon">📊</span><span class="h-label">Context Meter</span></div>
-                <div class="h-item"><span class="h-icon">📁</span><span class="h-label">Session Folders</span></div>
-                <div class="h-item"><span class="h-icon">📌</span><span class="h-label">Pin Sessions</span></div>
-                <div class="h-item"><span class="h-icon">🦎</span><span class="h-label">Chameleon Theme</span></div>
-                <div class="h-item"><span class="h-icon">🔤</span><span class="h-label">Text Size S/M/L/XL</span></div>
-                <div class="h-item"><span class="h-icon">🗑️</span><span class="h-label">Bulk Delete</span></div>
-                <div class="h-item"><span class="h-icon">🛡️</span><span class="h-label">Protected Sessions</span></div>
-                <div class="h-item"><span class="h-icon">👉</span><span class="h-label">Swipe Gestures</span></div>
-                <div class="h-item"><span class="h-icon">📱</span><span class="h-label">PWA + Android</span></div>
+            <div class="hl-grid">
+                <div class="hl-item">
+                    <div class="hl-icon">⚡</div>
+                    <div class="hl-title">Real-Time</div>
+                    <div class="hl-desc">Token-by-token streaming. See responses as they're written.</div>
+                </div>
+                <div class="hl-item">
+                    <div class="hl-icon">🧠</div>
+                    <div class="hl-title">Smart</div>
+                    <div class="hl-desc">AI titles, follow-ups, context meter. It thinks ahead.</div>
+                </div>
+                <div class="hl-item">
+                    <div class="hl-icon">🎨</div>
+                    <div class="hl-title">Yours to Customize</div>
+                    <div class="hl-desc">Models, personas, themes, text size. Make it fit you.</div>
+                </div>
+                <div class="hl-item">
+                    <div class="hl-icon">📂</div>
+                    <div class="hl-title">Full Workspace</div>
+                    <div class="hl-desc">File explorer, search, export, keyboard shortcuts. Desktop-first.</div>
+                </div>
             </div>
         </section>
 
