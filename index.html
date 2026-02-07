@@ -6,27 +6,27 @@
     <title>OpenCami 🦎 - A feature-rich web client for OpenClaw</title>
     <meta name="description" content="OpenCami is a feature-rich web client for OpenClaw with image attachments, conversation search, keyboard shortcuts, smart AI titles, and more.">
     <meta name="keywords" content="OpenClaw, OpenCami, web client, AI, chameleon, WebClaw">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="OpenCami 🦎 - Web Client for OpenClaw">
     <meta property="og:description" content="A feature-rich web client for OpenClaw with smart features.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opencami.xyz">
     <meta property="og:image" content="https://opencami.xyz/screenshots/opencami-chat.jpg">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="OpenCami 🦎 - Web Client for OpenClaw">
     <meta name="twitter:description" content="A feature-rich web client for OpenClaw with smart features.">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦎</text></svg>">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg-primary: #f7faf7;
@@ -35,9 +35,11 @@
             --bg-card-hover: #f0f8f0;
             --border: #d4e5d4;
             --border-light: #c0d8c0;
+
             --text-primary: #1a2e1a;
             --text-secondary: #3d5a3d;
             --text-muted: #6b8a6b;
+
             --accent-green: #22c55e;
             --accent-green-dim: #16a34a;
             --accent-lime: #84cc16;
@@ -48,6 +50,7 @@
             --accent-yellow: #eab308;
             --accent-purple: #a855f7;
             --accent-pink: #ec4899;
+
             --gradient-rainbow: linear-gradient(135deg, #22c55e, #84cc16, #14b8a6, #f97316, #eab308);
             --gradient-rainbow-text: linear-gradient(90deg, #22c55e, #84cc16, #14b8a6, #06b6d4, #f97316);
             --gradient-green: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
@@ -55,10 +58,13 @@
             --gradient-teal: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
             --gradient-orange: linear-gradient(135deg, #f97316 0%, #eab308 100%);
             --gradient-warm: linear-gradient(135deg, #f97316, #eab308, #84cc16);
+
             --glow-green: 0 4px 20px rgba(34, 197, 94, 0.25);
             --glow-rainbow: 0 4px 30px rgba(34, 197, 94, 0.2), 0 4px 30px rgba(249, 115, 22, 0.15);
+
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -67,6 +73,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+
         body {
             font-family: var(--font-sans);
             background: var(--bg-primary);
@@ -80,33 +87,35 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: -2;
             background-image:
-                linear-gradient(rgba(34, 197, 94, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34, 197, 94, 0.06) 1px, transparent 1px);
+                linear-gradient(rgba(34,197,94,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34,197,94,0.06) 1px, transparent 1px);
             background-size: 50px 50px;
         }
         .bg-glow {
             position: fixed; top: -30%; left: 30%; width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(132, 204, 22, 0.15) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(132,204,22,0.15) 0%, transparent 60%);
             pointer-events: none; z-index: -1;
         }
         .bg-glow-2 {
             position: fixed; top: 20%; right: -10%; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 60%);
             pointer-events: none; z-index: -1;
         }
         .bg-glow-3 {
             position: fixed; bottom: -20%; left: -10%; width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(20,184,166,0.12) 0%, transparent 60%);
             pointer-events: none; z-index: -1;
         }
 
-        /* ── Hero ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ==================== HERO ==================== */
         .hero {
-            display: flex; flex-direction: column; align-items: center;
-            text-align: center; padding: 48px 24px 32px; position: relative;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 60px 24px 48px; position: relative;
         }
         .hero-logo {
-            width: 100px; height: 100px; border-radius: 24px;
+            width: 120px; height: 120px; border-radius: 28px;
             margin-bottom: 20px; box-shadow: var(--glow-rainbow);
             animation: float 6s ease-in-out infinite;
         }
@@ -115,7 +124,7 @@
             50% { transform: translateY(-10px); }
         }
         .hero-title {
-            font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 800;
+            font-size: clamp(2.2rem, 7vw, 3.8rem); font-weight: 800;
             line-height: 1.1; margin-bottom: 12px; letter-spacing: -0.03em;
         }
         .hero-title .gradient {
@@ -128,216 +137,192 @@
             50% { background-position: 100% center; }
         }
         .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--text-secondary);
+            font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-secondary);
             margin-bottom: 10px; font-weight: 500;
         }
         .hero-tagline {
-            font-size: 0.92rem; color: var(--text-muted); max-width: 520px; margin-bottom: 24px;
+            font-size: 0.95rem; color: var(--text-muted); max-width: 520px; margin-bottom: 28px;
         }
-        .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px; }
 
         .btn {
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex; align-items: center; gap: 10px;
             padding: 12px 24px; border-radius: 12px; font-weight: 600;
             font-size: 0.95rem; text-decoration: none; transition: all 0.3s ease;
             cursor: pointer; border: none;
         }
-        .btn svg { width: 18px; height: 18px; }
+        .btn svg { width: 20px; height: 20px; }
         .btn-primary {
             background: var(--gradient-rainbow); background-size: 200% auto;
             color: white; box-shadow: var(--glow-rainbow);
         }
-        .btn-primary:hover { transform: translateY(-2px); background-position: right center; }
+        .btn-primary:hover {
+            transform: translateY(-2px); background-position: right center;
+            box-shadow: 0 6px 30px rgba(34,197,94,0.35), 0 6px 30px rgba(249,115,22,0.2);
+        }
         .btn-secondary {
-            background: var(--bg-card); color: var(--text-primary);
-            border: 2px solid var(--border);
+            background: var(--bg-card); color: var(--text-primary); border: 2px solid var(--border);
         }
         .btn-secondary:hover { background: var(--bg-card-hover); border-color: var(--accent-green); }
 
-        .hero-screenshot {
-            margin-top: 24px; max-width: 720px; width: 100%;
-            border-radius: var(--radius-xl); overflow: hidden;
-            box-shadow: var(--glow-rainbow), 0 16px 48px rgba(0,0,0,0.10);
-            border: 2px solid var(--border); transition: transform 0.3s ease;
+        .hero-stats {
+            display: flex; gap: 36px; padding: 16px 0; margin-bottom: 24px;
         }
-        .hero-screenshot:hover { transform: translateY(-3px); }
+        .stat { text-align: center; }
+        .stat-value {
+            font-size: 1.5rem; font-weight: 700;
+            background: var(--gradient-rainbow-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+        .hero-screenshot {
+            max-width: 780px; width: 100%; border-radius: var(--radius-xl); overflow: hidden;
+            box-shadow: var(--glow-rainbow), 0 16px 48px rgba(0,0,0,0.1);
+            border: 2px solid var(--border); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hero-screenshot:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow-rainbow), 0 24px 64px rgba(0,0,0,0.13);
+        }
         .hero-screenshot img { width: 100%; height: auto; display: block; }
 
-        /* ── Sticky Tabs ── */
+        /* ==================== TAB BAR ==================== */
         .tab-bar {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(247, 250, 247, 0.92); backdrop-filter: blur(20px);
+            background: rgba(247,250,247,0.92); backdrop-filter: blur(20px);
             border-bottom: 2px solid var(--border); padding: 0 24px;
-            display: flex; justify-content: center;
         }
         .tab-bar-inner {
-            display: flex; gap: 0; max-width: 600px; width: 100%;
+            max-width: 1200px; margin: 0 auto;
+            display: flex; gap: 6px; padding: 10px 0;
             overflow-x: auto; -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
         .tab-bar-inner::-webkit-scrollbar { display: none; }
+
         .tab-btn {
-            flex: 1; min-width: max-content; padding: 14px 24px;
-            background: none; border: none; border-bottom: 3px solid transparent;
-            font-family: var(--font-sans); font-size: 0.92rem; font-weight: 600;
-            color: var(--text-muted); cursor: pointer; transition: all 0.2s;
-            white-space: nowrap; text-align: center;
+            padding: 10px 24px; border-radius: 10px; border: 2px solid transparent;
+            background: transparent; color: var(--text-muted); font-weight: 600;
+            font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease;
+            white-space: nowrap; font-family: var(--font-sans);
         }
-        .tab-btn:hover { color: var(--text-secondary); }
+        .tab-btn:hover { color: var(--text-primary); background: var(--bg-secondary); }
         .tab-btn.active {
-            color: var(--accent-green-dim);
-            border-bottom-color: var(--accent-green);
+            background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(132,204,22,0.12));
+            border-color: rgba(34,197,94,0.35); color: var(--accent-green-dim);
         }
 
-        /* ── Tab Content ── */
-        .tab-content { display: none; padding: 32px 24px 48px; max-width: 1000px; margin: 0 auto; }
+        /* ==================== TAB CONTENT ==================== */
+        .tab-content { display: none; padding: 40px 24px 60px; min-height: 50vh; }
         .tab-content.active { display: block; }
+        .tab-content .container { max-width: 1200px; margin: 0 auto; }
 
-        /* ── Overview Tab ── */
-        .overview-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 18px; margin-bottom: 24px;
-            background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(132,204,22,0.15));
-            border: 1px solid rgba(34,197,94,0.3); border-radius: 50px;
-            font-size: 0.9rem; color: var(--accent-green-dim); font-weight: 700;
-        }
-        .overview-badge .dot {
-            width: 8px; height: 8px; background: var(--accent-green);
-            border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-        }
+        /* ===== OVERVIEW TAB ===== */
         .overview-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
         }
-        .overview-card {
-            background: var(--bg-card); border: 1.5px solid var(--border);
-            border-radius: var(--radius-md); padding: 16px 12px;
-            text-align: center; cursor: pointer; transition: all 0.2s;
-            user-select: none;
+        .overview-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 16px 18px; background: var(--bg-card); border: 2px solid var(--border);
+            border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s ease;
         }
-        .overview-card:hover {
+        .overview-item:hover {
             background: var(--bg-card-hover); border-color: var(--accent-green);
             transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.1);
         }
-        .overview-card-emoji { font-size: 1.6rem; margin-bottom: 6px; }
-        .overview-card-title { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); line-height: 1.3; }
+        .overview-item .oi-emoji { font-size: 1.5rem; flex-shrink: 0; }
+        .overview-item .oi-title { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
 
-        /* ── Features Tab ── */
-        .feature-category { margin-bottom: 12px; }
-        .category-header {
-            display: flex; align-items: center; gap: 12px;
-            padding: 16px 20px; background: var(--bg-card);
-            border: 1.5px solid var(--border); border-radius: var(--radius-md);
-            cursor: pointer; transition: all 0.2s; user-select: none; width: 100%;
-            font-family: var(--font-sans);
+        /* ===== FEATURES TAB ===== */
+        .feat-category { margin-bottom: 12px; }
+        .feat-category-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; background: var(--bg-card); border: 2px solid var(--border);
+            border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s ease;
+            user-select: none;
         }
-        .category-header:hover { background: var(--bg-card-hover); border-color: var(--border-light); }
-        .category-header.open { border-radius: var(--radius-md) var(--radius-md) 0 0; border-bottom-color: transparent; }
-        .category-emoji { font-size: 1.3rem; }
-        .category-title { flex: 1; font-size: 1rem; font-weight: 700; color: var(--text-primary); text-align: left; }
-        .category-count {
-            font-size: 0.72rem; padding: 3px 10px;
-            background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(132,204,22,0.12));
-            border-radius: 50px; color: var(--accent-green-dim); font-weight: 600;
+        .feat-category-header:hover { background: var(--bg-card-hover); border-color: var(--border-light); }
+        .feat-category-header h3 { font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .feat-chevron {
+            font-size: 1.2rem; transition: transform 0.25s ease; color: var(--text-muted);
         }
-        .category-arrow {
-            font-size: 0.8rem; color: var(--text-muted); transition: transform 0.2s;
+        .feat-category.open .feat-chevron { transform: rotate(90deg); }
+        .feat-category-body {
+            display: none; padding: 8px 0 0 0;
         }
-        .category-header.open .category-arrow { transform: rotate(180deg); }
-        .category-body {
-            display: none; border: 1.5px solid var(--border); border-top: none;
-            border-radius: 0 0 var(--radius-md) var(--radius-md);
-            background: var(--bg-card); padding: 16px 20px;
-        }
-        .category-body.open { display: block; }
+        .feat-category.open .feat-category-body { display: block; }
 
-        /* Feature items inside accordion */
-        .feat-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
-        .feat-item:last-child { border-bottom: none; }
-        .feat-item-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-        .feat-item-emoji { font-size: 1.2rem; }
-        .feat-item-title { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
-        .feat-item-tag {
-            font-size: 0.65rem; padding: 2px 7px;
-            background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(132,204,22,0.15));
-            color: var(--accent-green-dim); border-radius: 5px; font-weight: 600;
-            font-family: var(--font-mono);
+        .feat-item {
+            display: flex; gap: 16px; padding: 18px 20px;
+            background: var(--bg-card); border: 2px solid var(--border);
+            border-radius: var(--radius-md); margin-bottom: 8px; transition: all 0.2s ease;
         }
-        .feat-item-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
-        .feat-item-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .feat-item:hover { background: var(--bg-card-hover); border-color: var(--border-light); }
+        .feat-item .fi-emoji { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+        .feat-item .fi-body { flex: 1; }
+        .feat-item .fi-title { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+        .feat-item .fi-desc { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 8px; line-height: 1.55; }
+        .feat-item .fi-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
         .pill {
-            padding: 4px 10px; background: rgba(34,197,94,0.08);
-            border: 1px solid var(--border); border-radius: 50px;
-            font-size: 0.72rem; color: var(--text-secondary);
+            padding: 4px 10px; background: rgba(34,197,94,0.08); border: 1px solid var(--border);
+            border-radius: 50px; font-size: 0.75rem; color: var(--text-secondary);
         }
         .pill.accent {
             background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(132,204,22,0.15));
             border-color: rgba(34,197,94,0.3); color: var(--accent-green-dim); font-weight: 500;
         }
-        .feat-item.highlighted { background: rgba(34,197,94,0.06); border-radius: var(--radius-sm); padding: 14px 12px; margin: -2px -12px; }
 
-        /* Detail grid inside features */
-        .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 8px; }
-        .detail-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-secondary); }
-        .detail-item .check { color: var(--accent-green); font-weight: bold; }
-
-        /* ── Technical Tab ── */
+        /* ===== TECHNICAL TAB ===== */
         .tech-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; margin-bottom: 28px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; margin-bottom: 32px;
         }
         .tech-card {
             background: var(--bg-card); border: 2px solid var(--border);
-            border-radius: var(--radius-lg); padding: 24px; transition: all 0.3s ease;
+            border-radius: var(--radius-lg); padding: 28px; transition: all 0.3s ease;
         }
         .tech-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(34,197,94,0.1); }
         .tech-card:nth-child(1) { border-left: 4px solid var(--accent-green); }
         .tech-card:nth-child(2) { border-left: 4px solid var(--accent-orange); }
         .tech-card:nth-child(3) { border-left: 4px solid var(--accent-teal); }
-        .tech-card-icon { font-size: 1.8rem; margin-bottom: 12px; }
-        .tech-card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
-        .tech-card-desc { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 12px; }
+        .tech-card-icon { font-size: 2rem; margin-bottom: 14px; }
+        .tech-card-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+        .tech-card-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 14px; }
         .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
         .tech-tag {
             padding: 4px 10px;
             background: linear-gradient(135deg, rgba(132,204,22,0.15), rgba(34,197,94,0.15));
-            border-radius: 6px; font-size: 0.72rem; font-weight: 500; color: var(--accent-green-dim);
+            border-radius: 6px; font-size: 0.75rem; font-weight: 500; color: var(--accent-green-dim);
         }
-        .install-block {
-            background: var(--bg-card); border: 2px solid var(--border);
-            border-radius: var(--radius-lg); padding: 24px; border-left: 4px solid var(--accent-purple);
-        }
-        .install-block h3 { font-size: 1.1rem; margin-bottom: 12px; }
+
         .code-block {
             background: linear-gradient(135deg, rgba(34,197,94,0.08), rgba(20,184,166,0.08));
-            border: 1px solid var(--border); border-radius: var(--radius-md);
-            padding: 14px; font-family: var(--font-mono); font-size: 0.82rem;
-            overflow-x: auto;
+            border: 2px solid var(--border); border-radius: var(--radius-md);
+            padding: 20px 24px; font-family: var(--font-mono); font-size: 0.88rem;
+            overflow-x: auto; max-width: 700px;
         }
         .code-line { display: flex; gap: 8px; margin-bottom: 4px; }
         .code-line:last-child { margin-bottom: 0; }
         .code-prompt { color: var(--accent-green); }
         .code-comment { color: var(--text-muted); }
         .code-string { color: var(--accent-teal); }
-        .code-keyword { color: var(--accent-orange); }
 
-        /* ── About Tab ── */
+        /* ===== ABOUT TAB ===== */
         .about-card {
             max-width: 560px; margin: 0 auto; background: var(--bg-card);
             border: 2px solid var(--border); border-radius: var(--radius-xl);
-            padding: 40px; text-align: center;
+            padding: 44px; text-align: center;
         }
         .about-avatar {
-            width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px;
+            width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 20px;
             background: var(--gradient-rainbow); display: flex; align-items: center;
-            justify-content: center; font-size: 2.4rem; box-shadow: var(--glow-rainbow);
+            justify-content: center; font-size: 2.8rem; box-shadow: var(--glow-rainbow);
         }
         .about-quote {
             font-size: 1.15rem; font-style: italic; color: var(--text-primary);
-            margin-bottom: 12px; line-height: 1.6;
+            margin-bottom: 14px; line-height: 1.6;
         }
         .about-name {
             font-weight: 600; background: var(--gradient-rainbow-text);
@@ -346,67 +331,64 @@
         }
         .about-location {
             color: var(--text-muted); display: flex; align-items: center;
-            justify-content: center; gap: 8px; margin-bottom: 24px;
+            justify-content: center; gap: 8px; margin-bottom: 28px;
         }
-        .links-grid {
-            display: flex; justify-content: center; gap: 14px;
-            flex-wrap: wrap; margin-bottom: 28px;
+        .about-links {
+            display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
         }
-        .link-card {
-            display: flex; align-items: center; gap: 10px;
-            padding: 14px 20px; background: var(--bg-card);
-            border: 2px solid var(--border); border-radius: var(--radius-lg);
-            text-decoration: none; color: var(--text-primary); transition: all 0.3s ease;
-        }
-        .link-card:hover { background: var(--bg-card-hover); border-color: var(--accent-green); transform: translateY(-2px); }
-        .link-card svg { width: 22px; height: 22px; color: var(--accent-green); }
-        .link-card-text { font-weight: 600; font-size: 0.9rem; }
-        .link-card-sub { font-size: 0.72rem; color: var(--text-muted); }
-
-        .cta-box {
+        .about-link {
+            display: flex; align-items: center; gap: 10px; padding: 12px 20px;
             background: var(--bg-secondary); border: 2px solid var(--border);
-            border-radius: var(--radius-xl); padding: 36px; text-align: center;
+            border-radius: var(--radius-md); text-decoration: none; color: var(--text-primary);
+            font-weight: 600; font-size: 0.88rem; transition: all 0.2s ease;
         }
-        .cta-icon { font-size: 2.4rem; margin-bottom: 12px; }
-        .cta-title {
-            font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;
-            background: var(--gradient-rainbow-text); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .cta-desc { color: var(--text-secondary); margin-bottom: 20px; font-size: 0.92rem; }
+        .about-link:hover { border-color: var(--accent-green); background: var(--bg-card-hover); }
+        .about-link svg { width: 20px; height: 20px; color: var(--accent-green); }
 
-        /* ── Footer ── */
+        .about-built {
+            margin-top: 28px; font-size: 0.95rem; color: var(--text-muted);
+        }
+
+        /* ==================== FOOTER ==================== */
         footer {
-            padding: 28px 24px; border-top: 2px solid var(--border);
-            text-align: center; background: var(--bg-primary);
+            padding: 32px 24px; background: var(--bg-primary);
+            border-top: 2px solid var(--border); text-align: center;
         }
-        .footer-love { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 4px; }
+        .footer-love { font-size: 0.95rem; margin-bottom: 6px; color: var(--text-secondary); }
         .footer-love .heart {
-            background: var(--gradient-rainbow-text); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
+            background: var(--gradient-rainbow-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+        .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
+        .footer-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--accent-green); }
 
-        /* ── Responsive ── */
+        /* ==================== MOBILE ==================== */
         @media (max-width: 768px) {
-            .hero { padding: 32px 16px 24px; }
-            .hero-logo { width: 72px; height: 72px; border-radius: 18px; margin-bottom: 16px; }
-            .hero-screenshot { max-width: 100%; }
-            .tab-bar { padding: 0 8px; }
-            .tab-bar-inner { justify-content: flex-start; }
-            .tab-btn { padding: 12px 16px; font-size: 0.85rem; }
-            .tab-content { padding: 20px 16px 36px; }
+            .hero { padding: 40px 16px 32px; }
+            .hero-logo { width: 90px; height: 90px; }
+            .hero-stats { gap: 20px; }
+            .hero-stats .stat-value { font-size: 1.2rem; }
             .overview-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .detail-grid { grid-template-columns: 1fr; }
+            .overview-item { padding: 12px 14px; }
+            .overview-item .oi-emoji { font-size: 1.3rem; }
+            .overview-item .oi-title { font-size: 0.82rem; }
+            .tab-content { padding: 24px 16px 40px; }
             .tech-grid { grid-template-columns: 1fr; }
             .about-card { padding: 28px 20px; }
-            .links-grid { flex-direction: column; align-items: center; }
-            .link-card { width: 100%; max-width: 280px; }
+            .about-links { flex-direction: column; align-items: center; }
         }
-        @media (max-width: 380px) {
-            .overview-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-buttons { flex-direction: column; align-items: center; }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-in {
+            opacity: 0; transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -415,540 +397,489 @@
     <div class="bg-glow-2"></div>
     <div class="bg-glow-3"></div>
 
-    <!-- ── Hero ── -->
-    <section class="hero">
-        <img src="logo.png" alt="OpenCami Chameleon" class="hero-logo">
-        <h1 class="hero-title"><span class="gradient">OpenCami</span> 🦎</h1>
-        <p class="hero-subtitle">A feature-rich desktop web client for OpenClaw</p>
-        <p class="hero-tagline">Real-time streaming, smart follow-ups, image attachments, voice playback, persona picker, PWA support, and 20+ more features — all in one sleek interface.</p>
-        <div class="hero-buttons">
-            <a href="https://github.com/robbyczgw-cla/opencami" class="btn btn-primary" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
-            </a>
-            <a href="https://openclaw.ai" class="btn btn-secondary" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                Get OpenClaw
-            </a>
-        </div>
-        <div class="hero-screenshot">
-            <img src="screenshots/opencami-chat.jpg" alt="OpenCami Chat Interface" loading="lazy">
-        </div>
-    </section>
+    <main>
+        <!-- ==================== HERO ==================== -->
+        <section class="hero">
+            <img src="logo.png" alt="OpenCami Chameleon" class="hero-logo">
 
-    <!-- ── Sticky Tabs ── -->
-    <nav class="tab-bar">
-        <div class="tab-bar-inner">
-            <button class="tab-btn active" data-tab="overview">Overview</button>
-            <button class="tab-btn" data-tab="features">Features</button>
-            <button class="tab-btn" data-tab="technical">Technical</button>
-            <button class="tab-btn" data-tab="about">About</button>
-        </div>
-    </nav>
+            <h1 class="hero-title"><span class="gradient">OpenCami</span> 🦎</h1>
 
-    <!-- ══════════ TAB: Overview ══════════ -->
-    <div class="tab-content active" id="tab-overview">
-        <div style="text-align:center; margin-bottom: 8px;">
-            <span class="overview-badge"><span class="dot"></span> 20+ Features</span>
-        </div>
-        <div class="overview-grid">
-            <div class="overview-card" data-feature="streaming"><div class="overview-card-emoji">⚡</div><div class="overview-card-title">Streaming</div></div>
-            <div class="overview-card" data-feature="tts"><div class="overview-card-emoji">🔊</div><div class="overview-card-title">Voice TTS</div></div>
-            <div class="overview-card" data-feature="folders"><div class="overview-card-emoji">📁</div><div class="overview-card-title">Folders</div></div>
-            <div class="overview-card" data-feature="pin"><div class="overview-card-emoji">📌</div><div class="overview-card-title">Pin Sessions</div></div>
-            <div class="overview-card" data-feature="bulk-delete"><div class="overview-card-emoji">🗑️</div><div class="overview-card-title">Bulk Delete</div></div>
-            <div class="overview-card" data-feature="cami-folder"><div class="overview-card-emoji">🦎</div><div class="overview-card-title">Cami Folder</div></div>
-            <div class="overview-card" data-feature="search"><div class="overview-card-emoji">🔍</div><div class="overview-card-title">Search</div></div>
-            <div class="overview-card" data-feature="shortcuts"><div class="overview-card-emoji">⌨️</div><div class="overview-card-title">Shortcuts</div></div>
-            <div class="overview-card" data-feature="export"><div class="overview-card-emoji">📥</div><div class="overview-card-title">Export</div></div>
-            <div class="overview-card" data-feature="model-selector"><div class="overview-card-emoji">🎨</div><div class="overview-card-title">Model Selector</div></div>
-            <div class="overview-card" data-feature="personas"><div class="overview-card-emoji">🎭</div><div class="overview-card-title">Personas</div></div>
-            <div class="overview-card" data-feature="theme"><div class="overview-card-emoji">🦎</div><div class="overview-card-title">Chameleon Theme</div></div>
-            <div class="overview-card" data-feature="text-size"><div class="overview-card-emoji">🔤</div><div class="overview-card-title">Text Size</div></div>
-            <div class="overview-card" data-feature="file-explorer"><div class="overview-card-emoji">📂</div><div class="overview-card-title">File Explorer</div></div>
-            <div class="overview-card" data-feature="images"><div class="overview-card-emoji">🖼️</div><div class="overview-card-title">Image Attach</div></div>
-            <div class="overview-card" data-feature="titles"><div class="overview-card-emoji">🏷️</div><div class="overview-card-title">Smart Titles</div></div>
-            <div class="overview-card" data-feature="follow-ups"><div class="overview-card-emoji">💡</div><div class="overview-card-title">Follow-ups</div></div>
-            <div class="overview-card" data-feature="slash"><div class="overview-card-emoji">⚡</div><div class="overview-card-title">Slash Commands</div></div>
-            <div class="overview-card" data-feature="context"><div class="overview-card-emoji">📊</div><div class="overview-card-title">Context Meter</div></div>
-            <div class="overview-card" data-feature="pwa"><div class="overview-card-emoji">📱</div><div class="overview-card-title">PWA Install</div></div>
-            <div class="overview-card" data-feature="gestures"><div class="overview-card-emoji">👆</div><div class="overview-card-title">Gestures</div></div>
-            <div class="overview-card" data-feature="apk"><div class="overview-card-emoji">🤖</div><div class="overview-card-title">Android APK</div></div>
-        </div>
-    </div>
+            <p class="hero-subtitle">A feature-rich desktop web client for OpenClaw</p>
 
-    <!-- ══════════ TAB: Features ══════════ -->
-    <div class="tab-content" id="tab-features">
+            <p class="hero-tagline">
+                Real-time streaming, smart follow-ups, voice playback, persona picker, model switching, file explorer, PWA support — all in one sleek interface.
+            </p>
 
-        <!-- 💬 Communication -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="communication">
-                <span class="category-emoji">💬</span>
-                <span class="category-title">Communication</span>
-                <span class="category-count">2</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="communication">
-                <div class="feat-item" id="feat-streaming">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">⚡</span>
-                        <span class="feat-item-title">Real-Time Streaming</span>
-                        <span class="feat-item-tag">NEW</span>
-                    </div>
-                    <div class="feat-item-desc">Watch responses appear token-by-token as the AI thinks. Persistent WebSocket → SSE architecture with tool call indicators during processing. Smart fallback to polling if needed.</div>
-                    <div class="feat-item-pills">
-                        <span class="pill accent">⚡ Token-by-token</span>
-                        <span class="pill">WebSocket + SSE</span>
-                        <span class="pill">Smart fallback</span>
-                    </div>
-                </div>
-                <div class="feat-item" id="feat-tts">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🔊</span>
-                        <span class="feat-item-title">Voice Playback (TTS)</span>
-                        <span class="feat-item-tag">TTS</span>
-                    </div>
-                    <div class="feat-item-desc">Click the speaker button on any AI message to hear it read aloud. Multi-provider cascade: ElevenLabs → OpenAI TTS → Edge TTS (free, always works). Zero config needed.</div>
-                    <div class="detail-grid">
-                        <div class="detail-item"><span class="check">🥇</span> ElevenLabs (best)</div>
-                        <div class="detail-item"><span class="check">🥈</span> OpenAI TTS</div>
-                        <div class="detail-item"><span class="check">🥉</span> Edge TTS (free)</div>
-                        <div class="detail-item"><span class="check">✓</span> Play/stop controls</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 📁 Organization -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="organization">
-                <span class="category-emoji">📁</span>
-                <span class="category-title">Organization</span>
-                <span class="category-count">4</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="organization">
-                <div class="feat-item" id="feat-folders">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">📁</span>
-                        <span class="feat-item-title">Session Folders</span>
-                    </div>
-                    <div class="feat-item-desc">Sessions auto-grouped into collapsible folders — Chats, Sub-agents, Cron, and Other. Clean sidebar even with hundreds of sessions. Persisted folder state.</div>
-                </div>
-                <div class="feat-item" id="feat-cami-folder">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🦎</span>
-                        <span class="feat-item-title">OpenCami Chat Folder</span>
-                    </div>
-                    <div class="feat-item-desc">Chats created in OpenCami get their own dedicated 🦎 folder — separate from Telegram, Discord, and other channel sessions. Always know which conversations are yours.</div>
-                </div>
-                <div class="feat-item" id="feat-pin">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">📌</span>
-                        <span class="feat-item-title">Pin Sessions</span>
-                    </div>
-                    <div class="feat-item-desc">Pin important sessions to the top of the sidebar. Quick access to your most-used conversations — always one click away.</div>
-                </div>
-                <div class="feat-item" id="feat-bulk-delete">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🗑️</span>
-                        <span class="feat-item-title">Bulk Session Delete</span>
-                    </div>
-                    <div class="feat-item-desc">Selection mode with checkboxes for mass cleanup. Select All, delete with one click. Concurrent deletion (10 parallel) for speed. Sessions are archived, not destroyed.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🔍 Search & Navigation -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="search">
-                <span class="category-emoji">🔍</span>
-                <span class="category-title">Search & Navigation</span>
-                <span class="category-count">3</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="search">
-                <div class="feat-item" id="feat-search">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🔍</span>
-                        <span class="feat-item-title">Conversation Search</span>
-                        <span class="feat-item-tag">Full-text</span>
-                    </div>
-                    <div class="feat-item-desc">Find that one message from three weeks ago. Full-text search across all conversations with instant results. Search titles or dive deep into message content.</div>
-                    <div class="feat-item-pills">
-                        <span class="pill accent">⌘F Title search</span>
-                        <span class="pill accent">⌘⇧F Deep search</span>
-                        <span class="pill">Instant results</span>
-                    </div>
-                </div>
-                <div class="feat-item" id="feat-shortcuts">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">⌨️</span>
-                        <span class="feat-item-title">Keyboard Shortcuts</span>
-                        <span class="feat-item-tag">Power User</span>
-                    </div>
-                    <div class="feat-item-desc">Navigate conversations, send messages, create new chats, and manage your workspace — all without leaving the keyboard. ⌘N new chat, ⌘↵ send, ⌘B toggle sidebar, ⌘⌫ delete.</div>
-                </div>
-                <div class="feat-item" id="feat-export">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">📥</span>
-                        <span class="feat-item-title">Export Conversations</span>
-                        <span class="feat-item-tag">Multi-format</span>
-                    </div>
-                    <div class="feat-item-desc">Export any conversation in Markdown, JSON, or Plain Text. Your data is yours — archive, share, or process it however you need.</div>
-                    <div class="feat-item-pills">
-                        <span class="pill accent">📝 Markdown</span>
-                        <span class="pill accent">📋 JSON</span>
-                        <span class="pill accent">📄 Plain Text</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🎨 Customization -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="customization">
-                <span class="category-emoji">🎨</span>
-                <span class="category-title">Customization</span>
-                <span class="category-count">4</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="customization">
-                <div class="feat-item" id="feat-model-selector">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🎨</span>
-                        <span class="feat-item-title">Model Selector</span>
-                        <span class="feat-item-tag">Multi-Model</span>
-                    </div>
-                    <div class="feat-item-desc">Pick the right model for the job. All Gateway models available with per-message override. Remembers your selection and shows model aliases.</div>
-                </div>
-                <div class="feat-item" id="feat-personas">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🎭</span>
-                        <span class="feat-item-title">Persona Picker</span>
-                        <span class="feat-item-tag">Skill Integration</span>
-                    </div>
-                    <div class="feat-item-desc">Switch between 20 specialized AI personas across 7 categories on the fly. From Dev (coding) to Chef Marco (cooking) — pick the right expert for the job. Auto-detects available skills.</div>
-                </div>
-                <div class="feat-item" id="feat-theme">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🦎</span>
-                        <span class="feat-item-title">Chameleon Theme</span>
-                    </div>
-                    <div class="feat-item-desc">A vibrant, adaptive theme inspired by the chameleon mascot. Green-rainbow color palette with light, bright aesthetics that feel alive.</div>
-                </div>
-                <div class="feat-item" id="feat-text-size">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🔤</span>
-                        <span class="feat-item-title">Text Size</span>
-                    </div>
-                    <div class="feat-item-desc">Adjustable chat text size — S, M, L, or XL. Set once in Settings, applied everywhere, persisted forever.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 📂 Files -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="files">
-                <span class="category-emoji">📂</span>
-                <span class="category-title">Files</span>
-                <span class="category-count">2</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="files">
-                <div class="feat-item" id="feat-file-explorer">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">📂</span>
-                        <span class="feat-item-title">File Explorer</span>
-                        <span class="feat-item-tag">NEW</span>
-                    </div>
-                    <div class="feat-item-desc">Sidebar navigation with breadcrumb trail. Upload, download, rename, delete files & folders. Built-in text editor for 30+ file types with right-click context menu. Path jailing with symlink escape protection.</div>
-                    <div class="feat-item-pills">
-                        <span class="pill accent">Ctrl+S Save</span>
-                        <span class="pill">30+ Languages</span>
-                        <span class="pill">Secure</span>
-                    </div>
-                    <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 8px;">
-                        Thanks to <a href="https://github.com/balin-ar" style="color: var(--accent-green);">@balin-ar</a> for the original implementation 🙏
-                    </div>
-                </div>
-                <div class="feat-item" id="feat-images">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🖼️</span>
-                        <span class="feat-item-title">Image Attachments</span>
-                        <span class="feat-item-tag">Vision</span>
-                    </div>
-                    <div class="feat-item-desc">Share images directly in conversations. Smart compression keeps uploads fast. Drag & drop, clipboard paste, preview before send, multiple images, and vision model support.</div>
-                    <div class="detail-grid">
-                        <div class="detail-item"><span class="check">✓</span> Drag & drop</div>
-                        <div class="detail-item"><span class="check">✓</span> Clipboard paste</div>
-                        <div class="detail-item"><span class="check">✓</span> Smart compression</div>
-                        <div class="detail-item"><span class="check">✓</span> Multiple images</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🧠 Smart Features -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="smart">
-                <span class="category-emoji">🧠</span>
-                <span class="category-title">Smart Features</span>
-                <span class="category-count">4</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="smart">
-                <div class="feat-item" id="feat-titles">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🏷️</span>
-                        <span class="feat-item-title">Smart AI Titles</span>
-                        <span class="feat-item-tag">LLM-powered</span>
-                    </div>
-                    <div class="feat-item-desc">Automatically generated titles that actually describe what you discussed. Powered by LLMs with intelligent fallback — your conversations are always well-organized.</div>
-                </div>
-                <div class="feat-item" id="feat-follow-ups">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">💡</span>
-                        <span class="feat-item-title">Smart Follow-ups</span>
-                        <span class="feat-item-tag">✨ Hero</span>
-                    </div>
-                    <div class="feat-item-desc">Never stare at a blank input again. Instant heuristic suggestions appear immediately, then LLM-powered context-aware suggestions replace them seamlessly. One click to send.</div>
-                    <div class="feat-item-pills">
-                        <span class="pill accent">⚡ Zero Wait</span>
-                        <span class="pill accent">🧠 Context-Aware</span>
-                        <span class="pill">One-Click Send</span>
-                    </div>
-                </div>
-                <div class="feat-item" id="feat-slash">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">⚡</span>
-                        <span class="feat-item-title">Slash Commands</span>
-                    </div>
-                    <div class="feat-item-desc">Type / to access quick actions and commands right from the chat input. Fast, discoverable, and efficient.</div>
-                </div>
-                <div class="feat-item" id="feat-context">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">📊</span>
-                        <span class="feat-item-title">Context Meter</span>
-                    </div>
-                    <div class="feat-item-desc">Visual indicator showing how much of the model's context window you've used. Know when to start a new conversation before hitting limits.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 📱 Mobile -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="mobile">
-                <span class="category-emoji">📱</span>
-                <span class="category-title">Mobile</span>
-                <span class="category-count">3</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="mobile">
-                <div class="feat-item" id="feat-gestures">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">👆</span>
-                        <span class="feat-item-title">Touch Gestures</span>
-                    </div>
-                    <div class="feat-item-desc">Swipe to open sidebar, pull to refresh, and touch-optimized controls. Designed for comfortable one-handed use on mobile devices.</div>
-                </div>
-                <div class="feat-item" id="feat-performance">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🚀</span>
-                        <span class="feat-item-title">Performance</span>
-                    </div>
-                    <div class="feat-item-desc">Optimized rendering and lazy loading ensure smooth performance even on lower-end mobile devices.</div>
-                </div>
-                <div class="feat-item" id="feat-apk">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🤖</span>
-                        <span class="feat-item-title">Android APK</span>
-                    </div>
-                    <div class="feat-item-desc">Native Android app available as a standalone APK. Install directly for the best mobile experience with system integration.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 📱 PWA -->
-        <div class="feature-category">
-            <button class="category-header" data-cat="pwa">
-                <span class="category-emoji">📱</span>
-                <span class="category-title">PWA</span>
-                <span class="category-count">3</span>
-                <span class="category-arrow">▼</span>
-            </button>
-            <div class="category-body" data-cat-body="pwa">
-                <div class="feat-item" id="feat-pwa">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">📱</span>
-                        <span class="feat-item-title">Install as App</span>
-                        <span class="feat-item-tag">PWA</span>
-                    </div>
-                    <div class="feat-item-desc">Install OpenCami to your home screen for a native app experience. Works on Android and iOS. No browser chrome — feels like a real app.</div>
-                </div>
-                <div class="feat-item" id="feat-offline">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">📡</span>
-                        <span class="feat-item-title">Offline Support</span>
-                    </div>
-                    <div class="feat-item-desc">Smart caching with service worker ensures the app loads even without internet. Browse cached conversations offline.</div>
-                </div>
-                <div class="feat-item" id="feat-autoupdate">
-                    <div class="feat-item-header">
-                        <span class="feat-item-emoji">🔄</span>
-                        <span class="feat-item-title">Auto-Update</span>
-                    </div>
-                    <div class="feat-item-desc">Service worker handles updates automatically. Get the latest features without manual intervention — the app refreshes seamlessly.</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- ══════════ TAB: Technical ══════════ -->
-    <div class="tab-content" id="tab-technical">
-        <div class="tech-grid">
-            <div class="tech-card">
-                <div class="tech-card-icon">🌐</div>
-                <h3 class="tech-card-title">Built on WebClaw</h3>
-                <p class="tech-card-desc">Modern web foundation with React, TypeScript, and real-time streaming. Fast, responsive, and works everywhere.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">Streaming</span>
-                </div>
-            </div>
-            <div class="tech-card">
-                <div class="tech-card-icon">⚡</div>
-                <h3 class="tech-card-title">OpenClaw Gateway</h3>
-                <p class="tech-card-desc">Direct integration with OpenClaw Gateway for unified API access across multiple AI providers with automatic failover.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Multi-provider</span>
-                    <span class="tech-tag">Auto-failover</span>
-                    <span class="tech-tag">Unified API</span>
-                </div>
-            </div>
-            <div class="tech-card">
-                <div class="tech-card-icon">🔌</div>
-                <h3 class="tech-card-title">Quick Start</h3>
-                <p class="tech-card-desc">Clone, configure your gateway URL, and run. Designed for simple self-hosting alongside your OpenClaw Gateway instance.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Self-hosted</span>
-                    <span class="tech-tag">Docker-ready</span>
-                    <span class="tech-tag">Vercel</span>
-                </div>
-            </div>
-        </div>
-        <div class="install-block">
-            <h3>⚡ Quick Install</h3>
-            <div class="code-block">
-                <div class="code-line"><span class="code-prompt">$</span> <span class="code-keyword">git clone</span> <span class="code-string">https://github.com/robbyczgw-cla/opencami.git</span></div>
-                <div class="code-line"><span class="code-prompt">$</span> <span class="code-keyword">cd</span> opencami</div>
-                <div class="code-line"><span class="code-prompt">$</span> <span class="code-keyword">cp</span> .env.example .env <span class="code-comment"># configure your gateway URL</span></div>
-                <div class="code-line"><span class="code-prompt">$</span> <span class="code-keyword">npm install</span> && <span class="code-keyword">npm run dev</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ══════════ TAB: About ══════════ -->
-    <div class="tab-content" id="tab-about">
-        <div class="about-card">
-            <div class="about-avatar">🦎</div>
-            <p class="about-quote">"Building the OpenClaw ecosystem: Skills, PRs, and OpenCami."</p>
-            <p class="about-name">OpenCami Team</p>
-            <p class="about-location">📍 Clawiverse 🦎</p>
-        </div>
-
-        <div style="margin-top: 28px;">
-            <div class="links-grid">
-                <a href="https://github.com/robbyczgw-cla/opencami" class="link-card" target="_blank">
+            <div class="hero-buttons">
+                <a href="https://github.com/robbyczgw-cla/opencami" class="btn btn-primary" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    <div><div class="link-card-text">GitHub</div><div class="link-card-sub">Source code</div></div>
+                    View on GitHub
                 </a>
-                <a href="https://openclawskills.xyz" class="link-card" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    <div><div class="link-card-text">OpenClaw Skills</div><div class="link-card-sub">Skill marketplace</div></div>
-                </a>
-                <a href="https://openclaw.ai" class="link-card" target="_blank">
+                <a href="https://openclaw.ai" class="btn btn-secondary" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    <div><div class="link-card-text">OpenClaw</div><div class="link-card-sub">Main platform</div></div>
+                    Get OpenClaw
                 </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">20+</div>
+                    <div class="stat-label">Features</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Export Formats</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label">Conversations</div>
+                </div>
+            </div>
+
+            <div class="hero-screenshot fade-in">
+                <img src="screenshots/opencami-chat.jpg" alt="OpenCami Chat Interface" loading="lazy">
+            </div>
+        </section>
+
+        <!-- ==================== TAB BAR ==================== -->
+        <div class="tab-bar" id="tabBar">
+            <div class="tab-bar-inner">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="features">Features</button>
+                <button class="tab-btn" data-tab="technical">Technical</button>
+                <button class="tab-btn" data-tab="about">About</button>
             </div>
         </div>
 
-        <div class="cta-box">
-            <div class="cta-icon">🦎</div>
-            <h2 class="cta-title">Ready to Try OpenCami?</h2>
-            <p class="cta-desc">Open source, well-documented, and ready to enhance your AI conversations.</p>
-            <a href="https://github.com/robbyczgw-cla/opencami" class="btn btn-primary" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                Get Started on GitHub
-            </a>
+        <!-- ==================== OVERVIEW TAB ==================== -->
+        <div class="tab-content active" id="tab-overview">
+            <div class="container">
+                <div class="overview-grid">
+                    <div class="overview-item" data-feature="communication"><span class="oi-emoji">⚡</span><span class="oi-title">Streaming</span></div>
+                    <div class="overview-item" data-feature="communication"><span class="oi-emoji">🔊</span><span class="oi-title">Voice Playback</span></div>
+                    <div class="overview-item" data-feature="smart"><span class="oi-emoji">💡</span><span class="oi-title">Smart Follow-ups</span></div>
+                    <div class="overview-item" data-feature="smart"><span class="oi-emoji">🏷️</span><span class="oi-title">Smart Titles</span></div>
+                    <div class="overview-item" data-feature="search"><span class="oi-emoji">🔍</span><span class="oi-title">Search</span></div>
+                    <div class="overview-item" data-feature="search"><span class="oi-emoji">⌨️</span><span class="oi-title">Shortcuts</span></div>
+                    <div class="overview-item" data-feature="search"><span class="oi-emoji">📥</span><span class="oi-title">Export</span></div>
+                    <div class="overview-item" data-feature="customization"><span class="oi-emoji">🎨</span><span class="oi-title">Model Selector</span></div>
+                    <div class="overview-item" data-feature="customization"><span class="oi-emoji">🎭</span><span class="oi-title">Personas</span></div>
+                    <div class="overview-item" data-feature="customization"><span class="oi-emoji">🌈</span><span class="oi-title">Themes</span></div>
+                    <div class="overview-item" data-feature="customization"><span class="oi-emoji">🔤</span><span class="oi-title">Text Size</span></div>
+                    <div class="overview-item" data-feature="files"><span class="oi-emoji">📂</span><span class="oi-title">File Explorer</span></div>
+                    <div class="overview-item" data-feature="files"><span class="oi-emoji">🖼️</span><span class="oi-title">Attachments</span></div>
+                    <div class="overview-item" data-feature="organization"><span class="oi-emoji">📁</span><span class="oi-title">Folders</span></div>
+                    <div class="overview-item" data-feature="organization"><span class="oi-emoji">🦎</span><span class="oi-title">Cami Folder</span></div>
+                    <div class="overview-item" data-feature="organization"><span class="oi-emoji">📌</span><span class="oi-title">Pin Sessions</span></div>
+                    <div class="overview-item" data-feature="organization"><span class="oi-emoji">🗑️</span><span class="oi-title">Bulk Delete</span></div>
+                    <div class="overview-item" data-feature="smart"><span class="oi-emoji">📊</span><span class="oi-title">Context Meter</span></div>
+                    <div class="overview-item" data-feature="smart"><span class="oi-emoji">⚡</span><span class="oi-title">Slash Commands</span></div>
+                    <div class="overview-item" data-feature="mobile"><span class="oi-emoji">📱</span><span class="oi-title">PWA</span></div>
+                    <div class="overview-item" data-feature="mobile"><span class="oi-emoji">👆</span><span class="oi-title">Gestures</span></div>
+                    <div class="overview-item" data-feature="mobile"><span class="oi-emoji">🚀</span><span class="oi-title">Performance</span></div>
+                    <div class="overview-item" data-feature="mobile"><span class="oi-emoji">📦</span><span class="oi-title">APK Build</span></div>
+                    <div class="overview-item" data-feature="organization"><span class="oi-emoji">🔒</span><span class="oi-title">Protected</span></div>
+                </div>
+            </div>
         </div>
-    </div>
 
+        <!-- ==================== FEATURES TAB ==================== -->
+        <div class="tab-content" id="tab-features">
+            <div class="container">
+
+                <!-- 💬 Communication -->
+                <div class="feat-category" id="cat-communication">
+                    <div class="feat-category-header" onclick="toggleCategory(this)">
+                        <h3>💬 Communication</h3>
+                        <span class="feat-chevron">›</span>
+                    </div>
+                    <div class="feat-category-body">
+                        <div class="feat-item">
+                            <span class="fi-emoji">⚡</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Real-Time Streaming</div>
+                                <div class="fi-desc">Watch responses appear token-by-token via persistent WebSocket → SSE architecture. Includes tool-call indicators during processing and smart fallback to polling.</div>
+                                <div class="fi-pills">
+                                    <span class="pill accent">WebSocket</span>
+                                    <span class="pill accent">SSE</span>
+                                    <span class="pill">Smart Fallback</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🔊</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Voice Playback (TTS)</div>
+                                <div class="fi-desc">Click the speaker button on any AI message. Multi-provider cascade: ElevenLabs → OpenAI TTS → Edge TTS (free, always works). Zero configuration needed.</div>
+                                <div class="fi-pills">
+                                    <span class="pill accent">ElevenLabs</span>
+                                    <span class="pill accent">OpenAI</span>
+                                    <span class="pill">Edge TTS</span>
+                                    <span class="pill">Play/Stop</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 📁 Organization -->
+                <div class="feat-category" id="cat-organization">
+                    <div class="feat-category-header" onclick="toggleCategory(this)">
+                        <h3>📁 Organization</h3>
+                        <span class="feat-chevron">›</span>
+                    </div>
+                    <div class="feat-category-body">
+                        <div class="feat-item">
+                            <span class="fi-emoji">📁</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Session Folders</div>
+                                <div class="fi-desc">Sessions auto-grouped into collapsible folders — Chats, Sub-agents, Cron, and Other. Clean sidebar even with hundreds of sessions.</div>
+                                <div class="fi-pills"><span class="pill accent">Auto-detect</span><span class="pill">Count Badges</span><span class="pill">Persisted State</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🦎</span>
+                            <div class="fi-body">
+                                <div class="fi-title">OpenCami Chat Folder</div>
+                                <div class="fi-desc">Chats created in OpenCami get their own dedicated 🦎 folder — separate from Telegram, Discord, and other channel sessions.</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">📌</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Pin Sessions</div>
+                                <div class="fi-desc">Pin important sessions to the top of the sidebar. Quick access to your most-used conversations — always one click away.</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🗑️</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Bulk Session Delete</div>
+                                <div class="fi-desc">Selection mode with checkboxes for mass cleanup. Concurrent deletion (10 parallel). Sessions are archived, not destroyed.</div>
+                                <div class="fi-pills"><span class="pill accent">Select All</span><span class="pill">Parallel Delete</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🔒</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Protected Sessions</div>
+                                <div class="fi-desc">Mark sessions as protected to prevent accidental deletion during bulk operations.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🔍 Search & Nav -->
+                <div class="feat-category" id="cat-search">
+                    <div class="feat-category-header" onclick="toggleCategory(this)">
+                        <h3>🔍 Search &amp; Navigation</h3>
+                        <span class="feat-chevron">›</span>
+                    </div>
+                    <div class="feat-category-body">
+                        <div class="feat-item">
+                            <span class="fi-emoji">🔍</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Conversation Search</div>
+                                <div class="fi-desc">Full-text search across all conversations with instant results. ⌘F for title search, ⌘⇧F for deep message search.</div>
+                                <div class="fi-pills"><span class="pill accent">⌘F Title</span><span class="pill accent">⌘⇧F Deep</span><span class="pill">Instant Results</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">⌨️</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Keyboard Shortcuts</div>
+                                <div class="fi-desc">Navigate without touching your mouse. ⌘N new chat, ⌘↵ send, ⌘B toggle sidebar, ⌘⌫ delete conversation.</div>
+                                <div class="fi-pills"><span class="pill">⌘N New</span><span class="pill">⌘↵ Send</span><span class="pill">⌘B Sidebar</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">📥</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Export Conversations</div>
+                                <div class="fi-desc">Export any conversation as Markdown, JSON, or plain text. Your data is always yours.</div>
+                                <div class="fi-pills"><span class="pill accent">📝 .md</span><span class="pill accent">📋 .json</span><span class="pill accent">📄 .txt</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🎨 Customization -->
+                <div class="feat-category" id="cat-customization">
+                    <div class="feat-category-header" onclick="toggleCategory(this)">
+                        <h3>🎨 Customization</h3>
+                        <span class="feat-chevron">›</span>
+                    </div>
+                    <div class="feat-category-body">
+                        <div class="feat-item">
+                            <span class="fi-emoji">🎨</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Model Selector</div>
+                                <div class="fi-desc">Pick the right model for the job. All configured Gateway models available, with per-message override and remembered selection.</div>
+                                <div class="fi-pills"><span class="pill accent">All Models</span><span class="pill">Per-message Override</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🎭</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Persona Picker</div>
+                                <div class="fi-desc">Switch between 20 specialized AI personas across 7 categories. From Dev (coding) to Chef Marco (cooking) — pick the right expert.</div>
+                                <div class="fi-pills"><span class="pill accent">20 Personas</span><span class="pill accent">7 Categories</span><span class="pill">ClawHub</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🌈</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Theme Support</div>
+                                <div class="fi-desc">Light and dark themes with smooth transitions. Respects system preference with manual override.</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🔤</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Text Size</div>
+                                <div class="fi-desc">Adjustable chat text size — S, M, L, or XL. Set once in Settings, applied everywhere, persisted forever.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 📂 Files -->
+                <div class="feat-category" id="cat-files">
+                    <div class="feat-category-header" onclick="toggleCategory(this)">
+                        <h3>📂 Files</h3>
+                        <span class="feat-chevron">›</span>
+                    </div>
+                    <div class="feat-category-body">
+                        <div class="feat-item">
+                            <span class="fi-emoji">📂</span>
+                            <div class="fi-body">
+                                <div class="fi-title">File Explorer</div>
+                                <div class="fi-desc">Sidebar navigation with breadcrumb trail. Upload, download, rename, delete files &amp; folders. Built-in text editor for 30+ file types with Ctrl+S save.</div>
+                                <div class="fi-pills"><span class="pill accent">Ctrl+S Save</span><span class="pill">30+ Languages</span><span class="pill">Context Menu</span><span class="pill">Secure</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🖼️</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Image Attachments</div>
+                                <div class="fi-desc">Drag &amp; drop, clipboard paste, or click to add images. Smart compression keeps uploads fast. Preview before send, multiple images, vision model support.</div>
+                                <div class="fi-pills"><span class="pill accent">Drag &amp; Drop</span><span class="pill accent">Paste</span><span class="pill">Smart Compression</span><span class="pill">Vision</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🧠 Smart -->
+                <div class="feat-category" id="cat-smart">
+                    <div class="feat-category-header" onclick="toggleCategory(this)">
+                        <h3>🧠 Smart Features</h3>
+                        <span class="feat-chevron">›</span>
+                    </div>
+                    <div class="feat-category-body">
+                        <div class="feat-item">
+                            <span class="fi-emoji">🏷️</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Smart AI Titles</div>
+                                <div class="fi-desc">Auto-generated titles that actually describe what you discussed. LLM-powered with intelligent fallback — no more "New Chat #47".</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">💡</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Smart Follow-ups</div>
+                                <div class="fi-desc">Context-aware suggestions for what to ask next. Instant heuristic suggestions appear immediately, then LLM-refined ones seamlessly replace them. One click to send.</div>
+                                <div class="fi-pills"><span class="pill accent">⚡ Zero Wait</span><span class="pill accent">🧠 Context-Aware</span><span class="pill">One-Click Send</span></div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">📊</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Context Meter</div>
+                                <div class="fi-desc">Visual indicator showing how much context window is used. Know when to start a new conversation before hitting token limits.</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">⚡</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Slash Commands</div>
+                                <div class="fi-desc">Quick actions via slash commands in the chat input. Fast access to common operations without leaving the keyboard.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 📱 Mobile & PWA -->
+                <div class="feat-category" id="cat-mobile">
+                    <div class="feat-category-header" onclick="toggleCategory(this)">
+                        <h3>📱 Mobile &amp; PWA</h3>
+                        <span class="feat-chevron">›</span>
+                    </div>
+                    <div class="feat-category-body">
+                        <div class="feat-item">
+                            <span class="fi-emoji">👆</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Touch Gestures</div>
+                                <div class="fi-desc">Swipe to open sidebar, pull-to-refresh, and touch-optimized controls for a native mobile feel.</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">🚀</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Performance</div>
+                                <div class="fi-desc">Optimized rendering, lazy loading, and efficient caching for smooth performance even on low-end devices.</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">📦</span>
+                            <div class="fi-body">
+                                <div class="fi-title">APK Build</div>
+                                <div class="fi-desc">Build a native Android APK via Capacitor. Real app icon, splash screen, and home screen install.</div>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="fi-emoji">📱</span>
+                            <div class="fi-body">
+                                <div class="fi-title">Install as App (PWA)</div>
+                                <div class="fi-desc">Install to your home screen for a native experience. Offline support, auto-updates, smart caching — works on Android and iOS. No browser chrome.</div>
+                                <div class="fi-pills"><span class="pill accent">Offline</span><span class="pill accent">Auto-Update</span><span class="pill">iOS &amp; Android</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==================== TECHNICAL TAB ==================== -->
+        <div class="tab-content" id="tab-technical">
+            <div class="container">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-card-icon">🛠️</div>
+                        <h3 class="tech-card-title">Tech Stack</h3>
+                        <p class="tech-card-desc">Modern web foundation with React, TypeScript, TanStack Router, and Tailwind CSS. Fast, responsive, and works everywhere.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">TanStack Router</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Vite</span>
+                        </div>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-card-icon">⚡</div>
+                        <h3 class="tech-card-title">Architecture</h3>
+                        <p class="tech-card-desc">Direct integration with OpenClaw Gateway. Persistent WebSocket → SSE streaming for real-time token delivery with automatic failover.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Gateway API</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">SSE</span>
+                            <span class="tech-tag">Multi-provider</span>
+                            <span class="tech-tag">Auto-failover</span>
+                        </div>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-card-icon">🚀</div>
+                        <h3 class="tech-card-title">Quick Start</h3>
+                        <p class="tech-card-desc">Clone, install, run. Three commands and you're chatting. Works with any OpenClaw Gateway instance.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Open Source</span>
+                            <span class="tech-tag">MIT License</span>
+                            <span class="tech-tag">Self-Hosted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-line"><span class="code-comment"># Quick start</span></div>
+                    <div class="code-line"><span class="code-prompt">$</span> <span class="code-string">git clone https://github.com/robbyczgw-cla/opencami</span></div>
+                    <div class="code-line"><span class="code-prompt">$</span> <span class="code-string">cd opencami && npm install</span></div>
+                    <div class="code-line"><span class="code-prompt">$</span> <span class="code-string">npm run dev</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ABOUT TAB ==================== -->
+        <div class="tab-content" id="tab-about">
+            <div class="container">
+                <div class="about-card">
+                    <div class="about-avatar">🦎</div>
+                    <p class="about-quote">"Building the OpenClaw ecosystem: Skills, PRs, and OpenCami."</p>
+                    <p class="about-name">OpenCami Team</p>
+                    <p class="about-location">📍 Built with 💚 in Graz</p>
+
+                    <div class="about-links">
+                        <a href="https://github.com/robbyczgw-cla/opencami" class="about-link" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://openclaw.ai" class="about-link" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            OpenClaw
+                        </a>
+                        <a href="https://openclawskills.xyz" class="about-link" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            Skills
+                        </a>
+                    </div>
+
+                    <p class="about-built">Built with 💚 in Graz · Part of the OpenClaw ecosystem</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer>
+        <div class="footer-links">
+            <a href="https://github.com/robbyczgw-cla/opencami" target="_blank">GitHub</a>
+            <a href="https://openclaw.ai" target="_blank">OpenClaw</a>
+            <a href="https://openclawskills.xyz" target="_blank">Skills</a>
+        </div>
         <p class="footer-love">Made with <span class="heart">💚</span> in the Clawiverse</p>
-        <p class="footer-copy">© 2026 OpenCami • Part of the OpenClaw ecosystem</p>
+        <p class="footer-copy">© 2026 OpenCami · Part of the OpenClaw ecosystem</p>
     </footer>
 
     <script>
-    (function() {
-        // ── Tab switching ──
+        // ==================== TAB SWITCHING ====================
         const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabPanels = document.querySelectorAll('.tab-content');
+        const tabPanes = document.querySelectorAll('.tab-content');
 
         function switchTab(tabId) {
             tabBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
-            tabPanels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + tabId));
+            tabPanes.forEach(p => p.classList.toggle('active', p.id === 'tab-' + tabId));
         }
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => switchTab(btn.dataset.tab));
         });
 
-        // ── Accordion ──
-        document.querySelectorAll('.category-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const cat = header.dataset.cat;
-                const body = document.querySelector(`[data-cat-body="${cat}"]`);
-                const isOpen = header.classList.contains('open');
-                header.classList.toggle('open', !isOpen);
-                body.classList.toggle('open', !isOpen);
-            });
-        });
-
-        // ── Overview card → Features tab + highlight ──
-        document.querySelectorAll('.overview-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const featureId = card.dataset.feature;
+        // ==================== OVERVIEW GRID → FEATURES TAB ====================
+        document.querySelectorAll('.overview-item').forEach(item => {
+            item.addEventListener('click', () => {
                 switchTab('features');
-
-                // Find target feat-item
-                const target = document.getElementById('feat-' + featureId);
-                if (!target) return;
-
-                // Open its parent category
-                const catBody = target.closest('.category-body');
-                if (catBody) {
-                    const catName = catBody.dataset.catBody;
-                    const catHeader = document.querySelector(`[data-cat="${catName}"]`);
-                    if (catHeader && !catHeader.classList.contains('open')) {
-                        catHeader.classList.add('open');
-                        catBody.classList.add('open');
-                    }
+                const catId = 'cat-' + item.dataset.feature;
+                const cat = document.getElementById(catId);
+                if (cat) {
+                    cat.classList.add('open');
+                    setTimeout(() => cat.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
                 }
-
-                // Highlight briefly
-                document.querySelectorAll('.feat-item.highlighted').forEach(el => el.classList.remove('highlighted'));
-                target.classList.add('highlighted');
-                setTimeout(() => {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 50);
-                setTimeout(() => target.classList.remove('highlighted'), 2500);
             });
         });
-    })();
+
+        // ==================== ACCORDION ====================
+        function toggleCategory(header) {
+            header.parentElement.classList.toggle('open');
+        }
+
+        // ==================== FADE-IN OBSERVER ====================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
