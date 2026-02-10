@@ -213,7 +213,7 @@
                     Get OpenClaw</a>
             </div>
             <div class="code" style="max-width:420px;margin:20px auto 0;text-align:left;">
-                <div><span class="cp">$</span> npm install -g opencami@1.2.0</div>
+                <div><span class="cp">$</span> npm install -g opencami@1.4.0</div>
                 <div><span class="cp">$</span> opencami</div>
             </div>
             <div class="screenshot"><img src="screenshots/opencami-chat.jpg" alt="OpenCami Chat Interface" loading="lazy"></div>
@@ -262,13 +262,14 @@
                     <div class="f-item"><span class="f-emoji">🎤</span><div><div class="f-name">Voice Input (STT)</div><div class="f-desc">Record voice messages instead of typing. ElevenLabs Scribe v2 → OpenAI Whisper → Browser (free). Auto language detection for 90+ languages with recording UI, timer &amp; pulse animation.</div></div></div>
                 </div></div></div>
 
-                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📁 Organization</span><div><span class="cat-count">5</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📁 Organization</span><div><span class="cat-count">6</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body"><div class="f-grid">
                     <div class="f-item"><span class="f-emoji">📁</span><div><div class="f-name">Session Folders</div><div class="f-desc">Auto-grouped: Chats, Sub-agents, Cron/Isolated, Other. Clean sidebar.</div></div></div>
                     <div class="f-item"><span class="f-emoji">📌</span><div><div class="f-name">Pin Sessions</div><div class="f-desc">Pin important conversations to the top. Always accessible.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🗑️</span><div><div class="f-name">Bulk Delete</div><div class="f-desc">Select multiple sessions, delete at once with confirmation dialog.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🛡️</span><div><div class="f-name">Protected Sessions</div><div class="f-desc">Main + channel-bound sessions auto-protected from accidental deletion.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🤖</span><div><div class="f-name">Agent Manager</div><div class="f-desc">Full agent CRUD from the sidebar — no more editing JSON! Create, edit, delete agents visually. Shows model, workspace, sandbox mode, tools &amp; channel bindings. Uses OpenClaw v2026.2.9 Agent Management API.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">📋</span><div><div class="f-name">Cron Jobs Panel (Beta)</div><div class="f-desc">Manage recurring automations from a dedicated panel. Beta/experimental and actively evolving.</div></div></div>
                 </div></div></div>
 
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🔍 Search & Navigation</span><div><span class="cat-count">3</span> <span class="cat-arrow">▼</span></div></div>
@@ -278,19 +279,24 @@
                     <div class="f-item"><span class="f-emoji">📥</span><div><div class="f-name">Export Conversations</div><div class="f-desc">Markdown, JSON, or plain text. Your data is yours.</div></div></div>
                 </div></div></div>
 
-                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🎨 Customization</span><div><span class="cat-count">5</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🎨 Customization</span><div><span class="cat-count">7</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body"><div class="f-grid">
                     <div class="f-item"><span class="f-emoji">🎨</span><div><div class="f-name">Model Selector</div><div class="f-desc">Switch AI models per message from your gateway config.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🎭</span><div><div class="f-name">Persona Picker</div><div class="f-desc">20 AI personalities. Integrates with ClawHub personas skill.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🦎</span><div><div class="f-name">Chameleon Theme</div><div class="f-desc">Light/dark/system auto. Smooth transitions. Signature green.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🔤</span><div><div class="f-name">Text Size</div><div class="f-desc">S / M / L / XL in Settings. Readable at any distance.</div></div></div>
                     <div class="f-item"><span class="f-emoji">⚙️</span><div><div class="f-name">TTS/STT Provider Selection</div><div class="f-desc">Choose your preferred voice provider in Settings. TTS: Auto / ElevenLabs / OpenAI / Edge TTS (free). STT: Auto / ElevenLabs / OpenAI / Browser (free).</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🧠</span><div><div class="f-name">Thinking Level Toggle</div><div class="f-desc">Brain icon in the composer to quickly switch reasoning depth for each prompt.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🔧</span><div><div class="f-name">Multi-Provider LLM Settings</div><div class="f-desc">Configure OpenAI, OpenRouter, Ollama, or a custom endpoint from one unified settings panel.</div></div></div>
                 </div></div></div>
 
-                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📂 Files</span><div><span class="cat-count">2</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📂 Files</span><div><span class="cat-count">5</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body"><div class="f-grid">
                     <div class="f-item"><span class="f-emoji">📂</span><div><div class="f-name">File Explorer</div><div class="f-desc">Browse, upload, edit 30+ file types. Context menu, path jailing, breadcrumbs.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🖼️</span><div><div class="f-name">Image Attachments</div><div class="f-desc">Drag & drop, paste, or click. Smart compression. Preview before send.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">💻</span><div><div class="f-name">Code Block Enhancements</div><div class="f-desc">Line numbers, filename headers, and a word-wrap toggle for cleaner code reading.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🔗</span><div><div class="f-name">Smart File Links</div><div class="f-desc">Bare filenames become clickable links with quick directory navigation.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">✏️</span><div><div class="f-name">Open in Editor</div><div class="f-desc">Open file previews directly in the built-in editor with one click.</div></div></div>
                 </div></div></div>
 
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🧠 Smart Features</span><div><span class="cat-count">5</span> <span class="cat-arrow">▼</span></div></div>
@@ -302,12 +308,13 @@
                     <div class="f-item"><span class="f-emoji">🔍</span><div><div class="f-name">Search Sources Badge</div><div class="f-desc">Shows which search engines were used with favicons in an expandable badge. Supports Brave, Serper (Google), Tavily &amp; Exa. Appears at end of response. Toggle in Settings.</div></div></div>
                 </div></div></div>
 
-                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📱 Mobile & PWA</span><div><span class="cat-count">4</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📱 Mobile & PWA</span><div><span class="cat-count">5</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body"><div class="f-grid">
                     <div class="f-item"><span class="f-emoji">👉</span><div><div class="f-name">Swipe Gestures</div><div class="f-desc">Edge-swipe sidebar open/close. Dark backdrop, direction lock.</div></div></div>
                     <div class="f-item"><span class="f-emoji">⚡</span><div><div class="f-name">Performance</div><div class="f-desc">Lazy-loaded dialogs & routes. content-visibility. -16% bundle.</div></div></div>
-                    <div class="f-item"><span class="f-emoji">📱</span><div><div class="f-name">Native Android APK</div><div class="f-desc">Capacitor shell. App icons, splash screen, status bar integration.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">📱</span><div><div class="f-name">Native Android APK (Beta)</div><div class="f-desc">Capacitor shell. App icons, splash screen, status bar integration.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🚀</span><div><div class="f-name">PWA Support</div><div class="f-desc">Install as app, offline support, auto-update. Android & iOS.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🖥️</span><div><div class="f-name">Desktop App (Beta)</div><div class="f-desc">Experimental Tauri v2 native wrapper for macOS/Windows/Linux with tray icon, native notifications, auto-start, custom titlebar, and multiple windows. Web app is still the primary focus.</div></div></div>
                 </div></div></div>
             </div>
 
