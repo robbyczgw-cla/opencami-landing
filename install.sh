@@ -73,7 +73,7 @@ fi
 
 # --- Interactive Setup ---
 echo ""
-if [ -t 0 ] || { [ -r /dev/tty ] && [ -w /dev/tty ] && echo -n "" > /dev/tty 2>/dev/null; }; then
+if [ -t 0 ] || { [ -e /dev/tty ] && (echo -n "" > /dev/tty) 2>/dev/null; }; then
   printf "${BOLD}Configure OpenCami?${NC} [Y/n]: " > /dev/tty
   read -r setup < /dev/tty
 else
