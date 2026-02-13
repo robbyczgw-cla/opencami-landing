@@ -73,12 +73,12 @@ fi
 
 # --- Interactive Setup ---
 echo ""
-printf "${BOLD}Configure OpenCami?${NC} [Y/n]: "
 if [ -r /dev/tty ] && [ -w /dev/tty ]; then
+  printf "${BOLD}Configure OpenCami?${NC} [Y/n]: "
   read -r setup < /dev/tty
 else
   setup="n"
-  warn "No TTY — skipping interactive setup"
+  warn "No TTY — skipping interactive setup. Run 'opencami' to start manually."
 fi
 
 if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
@@ -97,7 +97,7 @@ if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
   echo ""
   ok "Configuration saved"
   echo ""
-  printf "${BOLD}Start OpenCami now?${NC} [Y/n]: "
+  printf "${BOLD}Start OpenCami now?${NC} [Y/n]: " > /dev/tty
   read -r start_now < /dev/tty
 
   if [ -z "$start_now" ] || [ "$start_now" = "y" ] || [ "$start_now" = "Y" ]; then
