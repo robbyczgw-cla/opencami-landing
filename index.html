@@ -249,6 +249,7 @@
         <section class="tab-section">
             <div class="tab-bar">
                 <button class="tab-btn active" data-tab="features">Feature Details</button>
+                <button class="tab-btn" data-tab="changelog">Changelog</button>
                 <button class="tab-btn" data-tab="technical">Technical</button>
                 <button class="tab-btn" data-tab="about">About</button>
             </div>
@@ -322,6 +323,106 @@
             </div>
 
             <!-- TECHNICAL -->
+            <!-- CHANGELOG -->
+            <div id="tab-changelog" class="tab-panel">
+                <div style="max-width:700px;">
+
+                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">🚀 1.6.0</span><div><span class="cat-count">2026-02-13</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body open">
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Added</strong></p>
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🔧 <strong>Workspace Settings</strong> — Files, Memory, Agents, Skills &amp; Cron toggles under dedicated section</li>
+                        <li>🔔 <strong>Browser Notifications</strong> — Background tab alerts, debounced, permission-aware</li>
+                        <li>🧠 <strong>Memory Viewer</strong> — Browse and edit MEMORY.md and daily files with grouped sidebar</li>
+                        <li>📂 <strong>File Explorer toggle</strong> — controllable via Settings (default: on)</li>
+                    </ul>
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;margin-top:10px;"><strong>Fixed</strong></p>
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>Memory Viewer file paths correctly prefixed for API compatibility</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">⚡ 1.5.1</span><div><span class="cat-count">2026-02-12</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>⚡ <strong>Lazy-load Shiki</strong> — Dynamic imports for syntax highlighting</li>
+                        <li>🔍 <strong>Promise.allSettled</strong> for global search — no more blocked results</li>
+                        <li>🔒 <strong>LocalStorage API key warning</strong> in LLM Features</li>
+                        <li>🧪 <strong>162 Vitest tests</strong> across 14 files</li>
+                        <li>📚 <strong>5 new docs</strong> — API, Architecture, Contributing, Deployment, Features</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🎨 1.5.0</span><div><span class="cat-count">2026-02-11</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🖥️ <strong>Tauri Desktop App</strong> (Beta) — Native wrapper with tray, notifications, multi-window</li>
+                        <li>🎨 <strong>Appearance Overhaul</strong> — Frost themes, accent colors, font family, density, bubble style</li>
+                        <li>📦 <strong>Skills Browser</strong> (Beta) — Browse and discover ClawHub skills</li>
+                        <li>📄 FAQ page</li>
+                        <li>🔧 Fixed streaming race condition, bulk delete, search jump, Frost Dark CSS</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🧩 1.4.0</span><div><span class="cat-count">2026-02-10</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🧩 <strong>Code Block Enhancements</strong> — Line numbers, filename headers, word wrap</li>
+                        <li>🤖 <strong>Cron Jobs Panel</strong> (Beta) — Visual manager with execution history</li>
+                        <li>🔗 <strong>Smart File Links</strong> — Bare filenames clickable (35+ extensions)</li>
+                        <li>📁 Directory Navigation, ✏️ Open in Editor</li>
+                        <li>⚡ Search optimization, overflow hardening</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🧠 1.3.2</span><div><span class="cat-count">2026-02-09</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🧠 <strong>Thinking Level Toggle</strong> — Reasoning depth per message</li>
+                        <li>🔌 <strong>Multi-Provider LLM</strong> — OpenAI, OpenRouter, Ollama, Custom</li>
+                        <li>⚙️ Settings sidebar layout, 🎙️ Voice tab</li>
+                        <li>🚀 Release automation (npm + GitHub Packages)</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🎤 1.3.0</span><div><span class="cat-count">2026-02-08</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🎤 <strong>Voice Input (STT)</strong> — ElevenLabs Scribe → OpenAI Whisper → Browser fallback</li>
+                        <li>🔊 <strong>TTS/STT Provider Selection</strong> in Settings</li>
+                        <li>🔍 <strong>Search Sources Badge</strong> with favicons</li>
+                        <li>🤖 <strong>Agent Manager</strong> — Full CRUD from sidebar</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📱 1.2.0</span><div><span class="cat-count">2026-02-07</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>👉 <strong>Swipe Gestures</strong> — Edge-swipe sidebar open/close</li>
+                        <li>📱 <strong>Native Android APK</strong> (Capacitor)</li>
+                        <li>⚡ <strong>Performance</strong> — Lazy dialogs/routes, -16% bundle</li>
+                        <li>📊 <strong>Context Window Meter</strong> — Token usage visualization</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🦎 1.0.0</span><div><span class="cat-count">2026-02-05</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🚀 <strong>Initial release</strong> — Forked from WebClaw</li>
+                        <li>⚡ Real-Time Streaming (WebSocket + SSE)</li>
+                        <li>🔊 Voice Playback (TTS) — ElevenLabs/OpenAI/Edge</li>
+                        <li>🎭 Persona Picker — 20 AI personalities</li>
+                        <li>🎨 Model Selector, Chameleon Theme</li>
+                        <li>📂 File Explorer, 🔍 Search, 📥 Export</li>
+                        <li>📁 Session Folders, 📌 Pins, 🛡️ Protected Sessions</li>
+                        <li>🏷️ Smart Titles, 💡 Follow-ups</li>
+                        <li>📱 PWA, ⌨️ Keyboard Shortcuts, 💬 Slash Commands</li>
+                    </ul>
+                </div></div>
+
+                </div>
+            </div>
+
             <div id="tab-technical" class="tab-panel">
                 <div class="t-grid">
                     <div class="t-card"><div class="t-icon">⚛️</div><div class="t-title">Modern Stack</div><div class="t-desc">Latest web technologies for performance and DX.</div>
