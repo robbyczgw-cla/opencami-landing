@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenCami 🦎 - A feature-rich web client for OpenClaw</title>
-    <meta name="description" content="OpenCami is a feature-rich desktop web client for OpenClaw with real-time streaming, voice input/playback, agent manager, persona picker, smart titles, context meter, and 25+ more features.">
-    <meta name="keywords" content="OpenClaw, OpenCami, web client, AI, chameleon, WebClaw">
+    <meta name="description" content="OpenCami is a feature-rich web client for OpenClaw with real-time streaming, voice I/O, workspace tools, browser notifications, AI personas, smart titles, and 35+ features.">
+    <meta name="keywords" content="OpenClaw, OpenCami, web client, AI, chameleon, WebClaw, workspace, memory viewer">
     <meta property="og:title" content="OpenCami 🦎 - Web Client for OpenClaw">
-    <meta property="og:description" content="A feature-rich desktop web client for OpenClaw with 25+ features.">
+    <meta property="og:description" content="A feature-rich web client for OpenClaw with 35+ features.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://opencami.xyz">
     <meta property="og:image" content="https://opencami.xyz/screenshots/opencami-chat.jpg">
@@ -203,7 +203,7 @@
             <div class="badge"><span class="dot"></span> Built on WebClaw</div>
             <h1><span class="g">OpenCami</span> 🦎</h1>
             <p class="subtitle">A feature-rich desktop web client for OpenClaw</p>
-            <p class="tagline">Multi-session chat with real-time streaming, voice input &amp; playback, agent manager, AI personas, smart titles, file explorer, context meter — 25+ features for power users in one interface.</p>
+            <p class="tagline">Multi-session chat with real-time streaming, voice I/O, workspace tools (files, memory, agents, skills, cron), AI personas, smart titles, browser notifications — 35+ features for power users.</p>
             <div class="buttons">
                 <a href="https://github.com/robbyczgw-cla/opencami" class="btn btn-p" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -213,7 +213,7 @@
                     Get OpenClaw</a>
             </div>
             <div class="code" style="max-width:420px;margin:20px auto 0;text-align:left;">
-                <div><span class="cp">$</span> npm install -g opencami@1.4.0</div>
+                <div><span class="cp">$</span> npm install -g opencami@1.6.0</div>
                 <div><span class="cp">$</span> opencami</div>
             </div>
             <div class="screenshot"><img src="screenshots/opencami-chat.jpg" alt="OpenCami Chat Interface" loading="lazy"></div>
@@ -262,14 +262,16 @@
                     <div class="f-item"><span class="f-emoji">🎤</span><div><div class="f-name">Voice Input (STT)</div><div class="f-desc">Record voice messages instead of typing. ElevenLabs Scribe v2 → OpenAI Whisper → Browser (free). Auto language detection for 90+ languages with recording UI, timer &amp; pulse animation.</div></div></div>
                 </div></div></div>
 
-                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📁 Organization</span><div><span class="cat-count">6</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📁 Organization</span><div><span class="cat-count">8</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body"><div class="f-grid">
                     <div class="f-item"><span class="f-emoji">📁</span><div><div class="f-name">Session Folders</div><div class="f-desc">Auto-grouped: Chats, Sub-agents, Cron/Isolated, Other. Clean sidebar.</div></div></div>
                     <div class="f-item"><span class="f-emoji">📌</span><div><div class="f-name">Pin Sessions</div><div class="f-desc">Pin important conversations to the top. Always accessible.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🗑️</span><div><div class="f-name">Bulk Delete</div><div class="f-desc">Select multiple sessions, delete at once with confirmation dialog.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🛡️</span><div><div class="f-name">Protected Sessions</div><div class="f-desc">Main + channel-bound sessions auto-protected from accidental deletion.</div></div></div>
-                    <div class="f-item"><span class="f-emoji">🤖</span><div><div class="f-name">Agent Manager</div><div class="f-desc">Full agent CRUD from the sidebar — no more editing JSON! Create, edit, delete agents visually. Shows model, workspace, sandbox mode, tools &amp; channel bindings. Uses OpenClaw v2026.2.9 Agent Management API.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🤖</span><div><div class="f-name">Agent Manager (Beta)</div><div class="f-desc">Full agent CRUD from the sidebar — create, edit, delete agents visually. Shows model, workspace, sandbox mode, tools &amp; channel bindings.</div></div></div>
                     <div class="f-item"><span class="f-emoji">📋</span><div><div class="f-name">Cron Jobs Panel (Beta)</div><div class="f-desc">Manage recurring automations from a dedicated panel. Beta/experimental and actively evolving.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🧠</span><div><div class="f-name">Memory Viewer</div><div class="f-desc">Browse and edit MEMORY.md and daily memory files. Grouped sidebar: Daily notes (newest first) and Notes (alphabetical). Toggle in Settings.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🔔</span><div><div class="f-name">Browser Notifications</div><div class="f-desc">Get notified when assistant replies while tab is in background. Debounced, permission-aware, click to jump to session.</div></div></div>
                 </div></div></div>
 
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🔍 Search & Navigation</span><div><span class="cat-count">3</span> <span class="cat-arrow">▼</span></div></div>
@@ -279,7 +281,7 @@
                     <div class="f-item"><span class="f-emoji">📥</span><div><div class="f-name">Export Conversations</div><div class="f-desc">Markdown, JSON, or plain text. Your data is yours.</div></div></div>
                 </div></div></div>
 
-                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🎨 Customization</span><div><span class="cat-count">7</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🎨 Customization</span><div><span class="cat-count">8</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body"><div class="f-grid">
                     <div class="f-item"><span class="f-emoji">🎨</span><div><div class="f-name">Model Selector</div><div class="f-desc">Switch AI models per message from your gateway config.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🎭</span><div><div class="f-name">Persona Picker</div><div class="f-desc">20 AI personalities. Integrates with ClawHub personas skill.</div></div></div>
@@ -288,6 +290,7 @@
                     <div class="f-item"><span class="f-emoji">⚙️</span><div><div class="f-name">TTS/STT Provider Selection</div><div class="f-desc">Choose your preferred voice provider in Settings. TTS: Auto / ElevenLabs / OpenAI / Edge TTS (free). STT: Auto / ElevenLabs / OpenAI / Browser (free).</div></div></div>
                     <div class="f-item"><span class="f-emoji">🧠</span><div><div class="f-name">Thinking Level Toggle</div><div class="f-desc">Brain icon in the composer to quickly switch reasoning depth for each prompt.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🔧</span><div><div class="f-name">Multi-Provider LLM Settings</div><div class="f-desc">Configure OpenAI, OpenRouter, Ollama, or a custom endpoint from one unified settings panel.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🗂️</span><div><div class="f-name">Workspace Settings</div><div class="f-desc">Unified toggles for Files, Memory, Agents, Skills &amp; Cron. Show or hide each tool from the sidebar.</div></div></div>
                 </div></div></div>
 
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">📂 Files</span><div><span class="cat-count">5</span> <span class="cat-arrow">▼</span></div></div>
