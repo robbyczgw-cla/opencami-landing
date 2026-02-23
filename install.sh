@@ -145,8 +145,12 @@ if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
     fi
 
     ok "Using origin: $opencami_origin"
-    echo "  ${YELLOW}Note:${NC} Add this to OpenClaw config (then restart gateway):"
-    echo "    gateway.controlUI.allowedOrigins: [\"$opencami_origin\"]"
+    echo "  You will open OpenCami at: $opencami_origin"
+    echo "  ${YELLOW}Required:${NC} Allowlist this exact origin in OpenClaw, then restart the gateway."
+    echo ""
+    echo "  Add to ~/.openclaw/openclaw.json:"
+    echo "    { \"gateway\": { \"controlUI\": { \"allowedOrigins\": [ \"$opencami_origin\" ] } } }"
+    echo ""
     break
   done
 
