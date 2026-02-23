@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="1.8.2"
+VERSION="1.8.3"
 
 cat <<'EOF'
 
@@ -87,8 +87,18 @@ if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
   read -r gateway_url < /dev/tty
   gateway_url="${gateway_url:-ws://127.0.0.1:18789}"
 
-  printf "  Gateway Token ${CYAN}(optional)${NC}: "
+  printf "  Gateway Token ${CYAN}(recommended)${NC}: "
   read -r gateway_token < /dev/tty
+
+  if [ -z "$gateway_token" ]; then
+    printf "  Gateway Password ${CYAN}(optional)${NC}: "
+    read -r gateway_password < /dev/tty
+  else
+    gateway_password=""
+  fi
+
+  printf "  Origin (for remote HTTPS) ${CYAN}(optional, e.g. https://<magicdns>:3001)${NC}: "
+  read -r opencami_origin < /dev/tty
 
   printf "  Port ${CYAN}(default: 3000)${NC}: "
   read -r port < /dev/tty
@@ -107,6 +117,8 @@ if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
 
     CMD="opencami --port $port --gateway $gateway_url"
     [ -n "$gateway_token" ] && CMD="$CMD --token $gateway_token"
+    [ -n "${gateway_password:-}" ] && CMD="$CMD --password $gateway_password"
+    [ -n "${opencami_origin:-}" ] && CMD="$CMD --origin $opencami_origin"
 
     echo "  ${CYAN}$ $CMD${NC}"
     echo ""
