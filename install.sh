@@ -92,6 +92,13 @@ if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
     IFS= read -r "$__var" < /dev/tty || true
   }
 
+  info "Gateway URL vs Origin quick guide:"
+  echo "  - Gateway URL = OpenClaw WebSocket endpoint (ws:// or wss://)."
+  echo "    Recommended when OpenCami runs on the SAME machine as OpenClaw: ws://127.0.0.1:18789"
+  echo "  - Origin = the EXACT browser URL you open OpenCami on (https://<host>:<port>, no trailing /)."
+  echo "    If you set an Origin, you must allowlist it in OpenClaw: gateway.controlUI.allowedOrigins"
+  echo ""
+
   # --- Gateway URL ---
   while true; do
     read_tty gateway_url "  Gateway WebSocket URL ${CYAN}(default: ws://127.0.0.1:18789)${NC}: "
@@ -138,6 +145,8 @@ if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
     fi
 
     ok "Using origin: $opencami_origin"
+    echo "  ${YELLOW}Note:${NC} Add this to OpenClaw config (then restart gateway):"
+    echo "    gateway.controlUI.allowedOrigins: [\"$opencami_origin\"]"
     break
   done
 
