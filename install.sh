@@ -83,9 +83,34 @@ fi
 
 if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
   echo ""
-  printf "  Gateway URL ${CYAN}(default: ws://127.0.0.1:18789)${NC}: "
-  read -r gateway_url < /dev/tty
-  gateway_url="${gateway_url:-ws://127.0.0.1:18789}"
+
+  # --- Prompt helpers (tty) ---
+  read_tty() {
+    local __var="$1"; shift
+    local __prompt="$1"; shift
+    printf "%b" "$__prompt" > /dev/tty
+    IFS= read -r "$__var" < /dev/tty || true
+  }
+
+  # --- Gateway URL ---
+  while true; do
+    read_tty gateway_url "  Gateway WebSocket URL ${CYAN}(default: ws://127.0.0.1:18789)${NC}: "
+    gateway_url="${gateway_url:-ws://127.0.0.1:18789}"
+    gateway_url="${gateway_url%/}"
+
+    if [[ "$gateway_url" =~ ^https?:// ]]; then
+      warn "You entered an HTTP URL ($gateway_url). The Gateway URL must be a WebSocket URL (ws:// or wss://)."
+      info "Recommended (when OpenCami runs on the same host as OpenClaw): ws://127.0.0.1:18789"
+      continue
+    fi
+
+    if [[ ! "$gateway_url" =~ ^wss?:// ]]; then
+      warn "Invalid Gateway URL scheme. Use ws:// or wss://"
+      continue
+    fi
+
+    break
+  done
 
   printf "  Gateway Token ${CYAN}(recommended)${NC}: "
   read -r gateway_token < /dev/tty
@@ -97,12 +122,34 @@ if [ -z "$setup" ] || [ "$setup" = "y" ] || [ "$setup" = "Y" ]; then
     gateway_password=""
   fi
 
-  printf "  Origin (for remote HTTPS) ${CYAN}(optional, e.g. https://<magicdns>:3001)${NC}: "
-  read -r opencami_origin < /dev/tty
+  # --- Origin (must match browser address bar exactly; no trailing slash) ---
+  while true; do
+    read_tty opencami_origin "  Origin (OpenCami public URL) ${CYAN}(optional, e.g. https://<magicdns>:3001)${NC}: "
+    opencami_origin="${opencami_origin%/}"
 
-  printf "  Port ${CYAN}(default: 3000)${NC}: "
-  read -r port < /dev/tty
-  port="${port:-3000}"
+    # allow empty
+    if [ -z "$opencami_origin" ]; then
+      break
+    fi
+
+    if [[ ! "$opencami_origin" =~ ^https?:// ]]; then
+      warn "Origin must start with https:// (or http:// for local testing). You entered: $opencami_origin"
+      continue
+    fi
+
+    ok "Using origin: $opencami_origin"
+    break
+  done
+
+  while true; do
+    read_tty port "  Port ${CYAN}(default: 3000)${NC}: "
+    port="${port:-3000}"
+    if [[ ! "$port" =~ ^[0-9]+$ ]] || [ "$port" -lt 1 ] || [ "$port" -gt 65535 ]; then
+      warn "Invalid port: $port"
+      continue
+    fi
+    break
+  done
 
   echo ""
   ok "Configuration saved"
