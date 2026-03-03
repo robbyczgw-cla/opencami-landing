@@ -332,7 +332,28 @@
             <div id="tab-changelog" class="tab-panel">
                 <div style="max-width:700px;">
 
-                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">🚀 1.6.0</span><div><span class="cat-count">2026-02-13</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">🔐 1.8.5</span><div><span class="cat-count">2026-03-03</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body open">
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Fixed</strong></p>
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🔐 <strong>Proper device pairing</strong> — correct scopes (<code>operator.admin</code>, <code>operator.approvals</code>, <code>operator.pairing</code>). No more <code>allowInsecureAuth</code> required.</li>
+                        <li>🔐 <strong>deviceToken storage</strong> — after pairing, OpenCami stores a device token for future connections</li>
+                        <li>🔐 <strong>Pending state detection</strong> — <code>/api/ping</code> now returns helpful <code>approveCommand</code> if device awaits gateway approval</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🔒 1.8.4</span><div><span class="cat-count">2026-03-03</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Security</strong></p>
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🔒 <strong>Command injection fix</strong> — Skills API replaced <code>execSync</code> with <code>execFile</code> + argument arrays</li>
+                        <li>🔒 <strong>SSRF / API key leak fix</strong> — LLM features API validates <code>X-LLM-Base-URL</code> against an allowlist</li>
+                        <li>🔒 <strong>Path traversal consistency</strong> — File info endpoint uses shared jailed path helper</li>
+                        <li>🔒 <strong>Private cache headers</strong> — User workspace files now served with <code>private, no-store</code></li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🚀 1.6.0</span><div><span class="cat-count">2026-02-13</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body open">
                     <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Added</strong></p>
                     <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
