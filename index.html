@@ -332,7 +332,30 @@
             <div id="tab-changelog" class="tab-panel">
                 <div style="max-width:700px;">
 
-                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">🔐 1.8.5</span><div><span class="cat-count">2026-03-03</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">⚡ 1.8.7</span><div><span class="cat-count">2026-03-07</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body open">
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Performance — Android PWA Overhaul</strong></p>
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🚀 <strong>Streaming polling reduced 13×</strong> — 150ms → 2000ms. SSE handles real-time deltas; polling is now a safety net only</li>
+                        <li>🎨 <strong>Render-blocking fonts removed</strong> — No more external Google Fonts import blocking first paint (200-800ms faster)</li>
+                        <li>🧊 <strong>Frost theme mobile-optimized</strong> — Reduced backdrop blur on touch devices, preventing GPU-heavy repaints</li>
+                        <li>💡 <strong>Deferred syntax highlighting</strong> — Code highlighting skipped during streaming, applied after response settles</li>
+                        <li>🧩 <strong>Lazy-loaded UI components</strong> — Follow-ups, thinking indicators, search badges loaded on demand</li>
+                        <li>📦 <strong>CSS containment</strong> — Added <code>contain: content</code> to messages + scroll compositing hints</li>
+                        <li>🖼️ <strong>Image optimization</strong> — Memoized base64 URIs + low fetch priority for inline images</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🔌 1.8.6</span><div><span class="cat-count">2026-03-07</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body">
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Fixed</strong></p>
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🔌 <strong>Duplicate WebSocket fix</strong> — Fixed Vite SSR issue causing doubled streaming text</li>
+                        <li>🔌 <strong>Stale WebSocket cleanup</strong> — Proper cleanup of ghost connections on reconnect</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🔐 1.8.5</span><div><span class="cat-count">2026-03-03</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body open">
                     <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Fixed</strong></p>
                     <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">

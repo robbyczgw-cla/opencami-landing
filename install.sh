@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="1.8.3"
+VERSION="1.8.7"
 
 cat <<'EOF'
 
