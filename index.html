@@ -331,7 +331,19 @@
             <div id="tab-changelog" class="tab-panel">
                 <div style="max-width:700px;">
 
-                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">⚡ 1.8.7</span><div><span class="cat-count">2026-03-07</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">🔧 1.8.8</span><div><span class="cat-count">2026-03-08</span> <span class="cat-arrow">▼</span></div></div>
+                <div class="cat-body open">
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Fixed &amp; Changed</strong></p>
+                    <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
+                        <li>🔧 <strong>Chat polling fix</strong> — <code>streamStart()</code> now fires only after send succeeds, reducing duplicate history fetches</li>
+                        <li>🔇 <strong>Hidden tab polling</strong> — Session polling pauses when browser tab is not visible</li>
+                        <li>🎤 <strong>Mic error UX</strong> — Replaced blocking alert dialogs with inline toast messages</li>
+                        <li>🗑️ <strong>Model picker removed</strong> — Non-functional picker removed; use <code>/model &lt;alias&gt;</code> in chat instead</li>
+                        <li>📦 Removed unused dependencies</li>
+                    </ul>
+                </div></div>
+
+                <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">⚡ 1.8.7</span><div><span class="cat-count">2026-03-07</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body open">
                     <p style="font-size:.85rem;color:var(--text2);margin-bottom:8px;"><strong>Performance — Android PWA Overhaul</strong></p>
                     <ul style="font-size:.84rem;color:var(--text2);line-height:1.7;padding-left:18px;">
