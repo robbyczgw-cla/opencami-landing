@@ -203,7 +203,7 @@
             <div class="badge"><span class="dot"></span> Built on WebClaw</div>
             <h1><span class="g">OpenCami</span> 🦎</h1>
             <p class="subtitle">A feature-rich desktop web client for OpenClaw</p>
-            <p class="tagline">Multi-session chat with real-time streaming, voice I/O, workspace tools (files, memory, agents, skills, cron), AI personas, smart titles, browser notifications — 35+ features for power users.</p>
+            <p class="tagline">Multi-session chat with real-time streaming, voice I/O, workspace tools (files, memory, agents, skills, cron), AI personas, smart titles, AI follow-up suggestions, model selection, browser notifications — 35+ features for power users.</p>
             <p class="tagline" style="margin-top:10px;max-width:620px;">
                 <strong>Self-hosting tip:</strong> after OpenClaw updates, if OpenCami can’t connect or you see scope/auth errors, restart the Gateway first. If it’s still broken, check the OpenCami GitHub for the current workaround.
             </p>
@@ -233,14 +233,14 @@
                     <div class="hl-desc">Token-by-token streaming. See responses as they're written.</div>
                 </div>
                 <div class="hl-item">
-                    <div class="hl-icon">🧠</div>
-                    <div class="hl-title">Smart</div>
-                    <div class="hl-desc">AI titles, follow-ups, context meter. It thinks ahead.</div>
+                    <div class="hl-icon">✨</div>
+                    <div class="hl-title">Smart Follow-ups</div>
+                    <div class="hl-desc">Get 3 contextual follow-up suggestions after each response.</div>
                 </div>
                 <div class="hl-item">
-                    <div class="hl-icon">🎨</div>
-                    <div class="hl-title">Yours to Customize</div>
-                    <div class="hl-desc">Models, personas, themes, text size. Make it fit you.</div>
+                    <div class="hl-icon">🤖</div>
+                    <div class="hl-title">Pick the LLM</div>
+                    <div class="hl-desc">Choose which AI model powers titles and follow-up suggestions.</div>
                 </div>
                 <div class="hl-item">
                     <div class="hl-icon">📂</div>
@@ -294,7 +294,7 @@
                     <div class="f-item"><span class="f-emoji">🔤</span><div><div class="f-name">Text Size</div><div class="f-desc">S / M / L / XL in Settings. Readable at any distance.</div></div></div>
                     <div class="f-item"><span class="f-emoji">⚙️</span><div><div class="f-name">TTS/STT Provider Selection</div><div class="f-desc">Choose your preferred voice provider in Settings. TTS: Auto / ElevenLabs / OpenAI / Edge TTS (free). STT: Auto / ElevenLabs / OpenAI / Browser (free).</div></div></div>
                     <div class="f-item"><span class="f-emoji">🧠</span><div><div class="f-name">Thinking Level Toggle</div><div class="f-desc">Brain icon in the composer to quickly switch reasoning depth for each prompt.</div></div></div>
-                    <div class="f-item"><span class="f-emoji">🔧</span><div><div class="f-name">Multi-Provider LLM Settings</div><div class="f-desc">Configure OpenAI, OpenRouter, Ollama, or a custom endpoint from one unified settings panel.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">🤖</span><div><div class="f-name">LLM Model Selector</div><div class="f-desc">Choose which AI model powers chat titles and follow-up suggestions, right from Settings.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🗂️</span><div><div class="f-name">Workspace Settings</div><div class="f-desc">Unified toggles for Files, Memory, Agents, Skills &amp; Cron. Show or hide each tool from the sidebar.</div></div></div>
                 </div></div></div>
 
@@ -310,7 +310,7 @@
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🧠 Smart Features</span><div><span class="cat-count">5</span> <span class="cat-arrow">▼</span></div></div>
                 <div class="cat-body"><div class="f-grid">
                     <div class="f-item"><span class="f-emoji">🏷️</span><div><div class="f-name">Smart AI Titles</div><div class="f-desc">LLM-generated titles via gpt-4.1-nano. No more "New Chat #47".</div></div></div>
-                    <div class="f-item"><span class="f-emoji">💡</span><div><div class="f-name">Smart Follow-ups</div><div class="f-desc">Context-aware suggestions. Instant heuristics → LLM refinements. One click.</div></div></div>
+                    <div class="f-item"><span class="f-emoji">✨</span><div><div class="f-name">AI Follow-up Suggestions</div><div class="f-desc">3 contextual follow-up questions appear after each response, ready in one click.</div></div></div>
                     <div class="f-item"><span class="f-emoji">📊</span><div><div class="f-name">Context Window Meter</div><div class="f-desc">Token usage bar: green → yellow → red. Pulse warning at 95%+.</div></div></div>
                     <div class="f-item"><span class="f-emoji">💬</span><div><div class="f-name">Slash Commands</div><div class="f-desc">/help shows available commands. Quick access to OpenClaw features.</div></div></div>
                     <div class="f-item"><span class="f-emoji">🔍</span><div><div class="f-name">Search Sources Badge</div><div class="f-desc">Shows which search engines were used with favicons in an expandable badge. Supports Brave, Serper (Google), Tavily &amp; Exa. Appears at end of response. Toggle in Settings.</div></div></div>
@@ -331,7 +331,7 @@
             <div id="tab-changelog" class="tab-panel">
                 <div style="max-width:700px;">
 
-                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">🚀 2.0.0</span><div><span class="cat-count">2026-04-08</span> <span class="cat-arrow">▼</span></div></div><div class="cat-body"><ul><li>⚡ <strong>OpenClaw Gateway inference</strong> — all LLM features (smart titles, follow-ups) now route through the local OpenClaw Gateway. No external API key required.</li><li>🧹 Removed legacy OpenAI API path and LLM settings tab</li><li>⏱️ Gateway timeouts increased to 30s (prevents premature timeouts on first request)</li><li>🔧 Gateway client with automatic heuristic fallback</li><li>📦 <strong>⚠️ Breaking:</strong> Removed <code>OPENAI_API_KEY</code> support — use OpenClaw Gateway instead</li></ul></div></div>
+                <div class="cat"><div class="cat-head open" onclick="toggle(this)"><span class="cat-title">🚀 2.1.0</span><div><span class="cat-count">2026-04-08</span> <span class="cat-arrow">▼</span></div></div><div class="cat-body"><ul><li>✨ <strong>AI Follow-up Suggestions</strong> — 3 contextual follow-up questions appear after each response</li><li>🤖 <strong>LLM Model Selector</strong> — choose which AI model powers titles and follow-ups</li><li>⚡ <strong>OpenClaw Gateway inference</strong> — all LLM features (smart titles, follow-ups) now route through the local OpenClaw Gateway. No external API key required.</li><li>⏱️ Gateway timeouts increased to 30s (prevents premature timeouts on first request)</li><li>🔧 Gateway client with automatic heuristic fallback</li></ul></div></div>
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">🔧 1.9.1</span><div><span class="cat-count">2026-03-18</span> <span class="cat-arrow">▼</span></div></div><div class="cat-body"><ul><li>🖼️ <strong>Image attachments fixed</strong> — images no longer disappear after streaming completes</li><li>🔄 Retry UI works for image-only messages</li><li>📎 Retry preserves original attachments</li><li>⏱️ Reconnect jitter prevents thundering herd</li></ul></div></div>
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">⚡ 1.9.0</span><div><span class="cat-count">2026-03-11</span> <span class="cat-arrow">▼</span></div></div><div class="cat-body"><ul><li>⚡ <strong>Reliable Streaming</strong> — all messages stream correctly, not just the first one</li><li>🔧 Unified gateway connection eliminates connId mismatches</li><li>🔀 Seq-based dedup prevents doubled text</li><li>🔑 Device pairing now requests all required scopes — by <a href="https://github.com/robbyczgw-cla">@robbyczgw-cla</a></li><li>🌙 Dark mode visibility fixes for slash commands &amp; context meter — by <a href="https://github.com/maciejlis">@maciejlis</a></li></ul></div></div>
                 <div class="cat"><div class="cat-head" onclick="toggle(this)"><span class="cat-title">⚡ 1.8.13</span><div><span class="cat-count">2026-03-10</span> <span class="cat-arrow">▼</span></div></div><div class="cat-body"><ul><li>⚡ <strong>Streaming with tool-call support</strong> — token-by-token streaming now works through tool calls</li><li>🔌 Declare <code>tool-events</code> capability for gateway agent streaming</li><li>🔗 Shared gateway client so <code>chat.send</code> and events share the same connection</li><li>📡 Raw event proxy matching upstream WebClaw architecture</li><li>🔒 SessionKey filter prevents cross-session event leakage</li></ul></div></div>
